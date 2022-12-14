@@ -3,3 +3,4 @@ languageCode = 'ja'
 title = 'にっくのぶろぐ'
 theme = 'ananke'
 summarylength = 50
+HasCJKLanguage = true
