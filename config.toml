@@ -1,4 +1,5 @@
 baseURL = 'https://nick-san.github.io/nick-blog/'
 languageCode = 'ja'
 title = 'にっくのぶろぐ'
-theme = 'hugo-theme-walden'
+theme = 'ananke'
+summarylength = 50
