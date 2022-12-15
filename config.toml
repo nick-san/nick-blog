@@ -9,7 +9,6 @@ resourceDir = "../resources"
 
 Paginate = 3 # this is set low for demonstrating with dummy content. Set to a higher number
 
-title = "Ananke"
 weight = 1
 contentDir = "content/en"
 # languageDirection = 'rtl' for Right-To-Left languages
