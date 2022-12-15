@@ -1,7 +1,7 @@
-title = "Notre-Dame de Paris"
-baseURL = "https://gohugo-theme-ananke.pages.dev"
-languageCode = "en-us"
-theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
+title = "にっくのぶろぐ"
+baseURL = "https://nick-san.github.io/nick-blog/"
+languageCode = "ja"
+theme = "ananke"
 resourceDir = "../resources"
 
 DefaultContentLanguage = "en"
