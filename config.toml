@@ -7,10 +7,8 @@ HasCJKLanguage = true
 
 resourceDir = "../resources"
 
-Paginate = 3 # this is set low for demonstrating with dummy content. Set to a higher number
-
 weight = 1
-contentDir = "content/en"
+contentDir = "content"
 # languageDirection = 'rtl' for Right-To-Left languages
 
 [params]
