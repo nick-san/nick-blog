@@ -1,7 +1,7 @@
 ---
 title: "Bought Fire 7"
 date: 2023-02-28T21:15:44+09:00
-draft: true
+draft: false
 ---
 
 # Amazon Fire 7 (2022) を買った
