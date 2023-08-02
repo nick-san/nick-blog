@@ -1,0 +1,26 @@
+title = "にっくのぶろぐ"
+baseURL = "https://nick-san.github.io/nick-blog/"
+languageCode = "ja"
+theme = "hugo-theme-walden"
+summarylength = 50
+HasCJKLanguage = true
+
+resourceDir = "../resources"
+
+weight = 1
+contentDir = "content"
+# languageDirection = 'rtl' for Right-To-Left languages
+
+[params]
+  text_color = ""
+  author = ""
+  favicon = ""
+  site_logo = ""
+  description = ""
+  # choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
+  background_color_class = "bg-black"
+  recent_posts_number = 3
+
+[[params.ananke_socials]]
+name = "twitter"
+url = "https://twitter.com/GoHugoIO"
