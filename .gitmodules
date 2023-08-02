@@ -7,5 +7,5 @@
 	url = https://github.com/Homecat805/hugo-theme-walden
 
 [submodule "themes/hugo-theme-stack"]
-  path = themes/hugo-theme-stack
-  url = https://github.com/CaiJimmy/hugo-theme-stack
+	path = themes/hugo-theme-stack
+	url = https://github.com/CaiJimmy/hugo-theme-stack
