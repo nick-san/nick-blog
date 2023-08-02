@@ -7,3 +7,9 @@ tags: [themes]
 ---
 
 # あたらしいテーマにした
+
+弊ブログは Hugo で生成しているんですが、やっと重い腰を上げてナウい感じのよさそうテーマを見つけたのでこれにしました。
+
+[hugo-theme-stack](https://github.com/CaiJimmy/hugo-theme-stack)
+
+[公式サイト](https://stack.jimmycai.com/)

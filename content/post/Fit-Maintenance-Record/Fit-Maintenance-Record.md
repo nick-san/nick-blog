@@ -4,6 +4,7 @@ date: 2023-07-21T15:10:38+09:00
 draft: false
 image: "https://media.discordapp.net/attachments/989616245374590996/989616525105303602/IMG_20220620_190325.jpg?width=1200&height=675"
 tag: [car]
+categories: [car]
 
 ---
 

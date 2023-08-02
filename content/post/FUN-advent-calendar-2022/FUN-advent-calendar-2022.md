@@ -2,6 +2,7 @@
 title: "FUN Advent Calendar 2022"
 date: 2022-12-08T00:00:00+09:00
 draft: false
+image: "https://i.imgur.com/eT7QCic.jpg"
 ---
 
 # FUN Advent Calendar 2022
