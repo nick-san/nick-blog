@@ -8,7 +8,7 @@ categories: [car]
 
 # フロント2輪浮かせた状態で1速にてクラッチをつないではいけない
 
-![入庫フィッフィ][https://media.discordapp.net/attachments/664062785856208896/1145566084141953086/IMG_20230825_231122.jpg?width=1198&height=675]
+![入庫フィッフィ](https://media.discordapp.net/attachments/664062785856208896/1145566084141953086/IMG_20230825_231122.jpg?width=1198&height=675)
 
 ## TL;DR
 
