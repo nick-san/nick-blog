@@ -2,6 +2,8 @@
 title: "フィットのブレーキキャリパーをOHした"
 date: 2023-08-31T19:09:53+09:00
 draft: false
+image: https://media.discordapp.net/attachments/664062785856208896/1154358440462929971/IMG_20230831_233010.jpg?width=1064&height=599
+categories: [car]
 ---
 
 ## 概要
