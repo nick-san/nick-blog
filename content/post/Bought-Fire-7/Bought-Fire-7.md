@@ -3,6 +3,7 @@ title: "Bought Fire 7"
 date: 2023-02-28T21:15:44+09:00
 draft: false
 image: https://i.imgur.com/6kkSNGY.jpg
+categories: [gadget]
 ---
 
 # Amazon Fire 7 (2022) を買った

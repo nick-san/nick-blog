@@ -3,6 +3,7 @@ title: "Pebble Timeをn年ぶりに復活させた"
 date: 2023-08-13T23:11:29+09:00
 draft: false
 image: "https://media.discordapp.net/attachments/664062785856208896/1140295942466179202/IMG_20230813_234848.jpg?width=718&height=405"
+categories: [gadget]
 ---
 
 ## Pebble というスマートウォッチ
