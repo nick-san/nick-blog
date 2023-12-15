@@ -1,16 +1,17 @@
 ---
 title: "I3wmとYaSTやら"
-date: 2023-12-09T11:32:23+09:00
-draft: true
+date: 2023-12-15
+draft: false
+image: "https://media.discordapp.net/attachments/664062785856208896/1185229856502464613/image.png?ex=658eda52&is=657c6552&hm=bde7f72e7d2d7317a38bcc79522b1aa460f330c34901b5e047ef38b61a748b17&=&format=webp&quality=lossless&width=719&height=331"
 ---
 
-**この記事は[openSUSE Advent Calendar 2023](https://adventar.org/calendars/9615) n日目の記事です。**
+**この記事は[openSUSE Advent Calendar 2023](https://adventar.org/calendars/9615) 16日目の記事です。**
 
 ## まえがき(自己紹介/経緯)
 
 ### 自己紹介
 
-はじめまして。函館でしがない情報系学生をしているニックと申します。
+はじめまして。函館でしがない情報系学生をしているニック([@rlysleepynick](https://twitter.com/rlysleepynick))と申します。
 
 普段は車を壊して直したり、openSUSE環境を壊して直したりすることをしています。
 
@@ -119,5 +120,12 @@ XTermのカラースキームに関してはググると良い感じのが出て
 あるいはGUIでそれっぽいパスワード入力画面を出す
 
 ができれば100点満点だったと思いますが、自分としては今までが邪魔すぎたので今回のやり方で概ね満足しました。
+
+### ほんとにさいごに
+
+後になって知りましたが、KDEの環境には[KDESu](https://api.kde.org/frameworks/kdesu/html/index.html)というものがあるんですね...
+
+- これ使えばいいやん!という見方もあると思いますが、i3WMで余計なものいれたくない前提という記事でした! という後付けがましい締めくくりとさせていただきますw
+
 
 最後になりましたが、読んでいただきありがとうございました。
