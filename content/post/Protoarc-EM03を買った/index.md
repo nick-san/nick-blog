@@ -2,7 +2,7 @@
 title: "Protoarc EM03を買った"
 date: 2023-12-15T02:09:25+09:00
 draft: false
-image: "https://media.discordapp.net/attachments/664062785856208896/1185040195851128974/IMG_20231215_110508.jpg?ex=658e29af&is=657bb4af&hm=0e070059bf6cd7a2d2c2fab56e887b923ccff121dedd5eb015843e85fbe48cae&=&format=webp&width=1170&height=659"
+image: "https://rlysleepycontents.blob.core.windows.net/images/IMG_20231215_110508.jpg"
 categories: [gadget]
 ---
 
@@ -20,7 +20,7 @@ ProtoArcという謎メーカーから出ていたEM03というトラックボ�
 
 ## 本体の紹介
 
-![](https://media.discordapp.net/attachments/664062785856208896/1185040195851128974/IMG_20231215_110508.jpg?ex=658e29af&is=657bb4af&hm=0e070059bf6cd7a2d2c2fab56e887b923ccff121dedd5eb015843e85fbe48cae&=&format=webp&width=1170&height=659)
+![](https://rlysleepycontents.blob.core.windows.net/images/664062785856208896/1185040195851128974/IMG_20231215_110508.jpg?ex=658e29af&is=657bb4af&hm=0e070059bf6cd7a2d2c2fab56e887b923ccff121dedd5eb015843e85fbe48cae&=&format=webp&width=1170&height=659)
 
 形状は非常に Microsoft謹製の例のトラックボールに似通っており、如何にもエルゴノミクスな感じです。
 
@@ -28,7 +28,7 @@ ProtoArcという謎メーカーから出ていたEM03というトラックボ�
 
 - 劣化したときのことはあまりかんがえたくないです汗
 
-![](https://media.discordapp.net/attachments/664062785856208896/1185040196618703031/IMG_20231215_110526.jpg?ex=658e29af&is=657bb4af&hm=52b52dc1c4009ac5614a611f3da3d27c369a8b8a6425ad092f070bae6834a5e2&=&format=webp&width=1170&height=659)
+![](https://rlysleepycontents.blob.core.windows.net/images/664062785856208896/1185040196618703031/IMG_20231215_110526.jpg?ex=658e29af&is=657bb4af&hm=52b52dc1c4009ac5614a611f3da3d27c369a8b8a6425ad092f070bae6834a5e2&=&format=webp&width=1170&height=659)
 
 主なボタンの数は、左クリック & 中クリック(ホイール押下) & 進む & 戻る & 右クリック の5つです。
 
@@ -40,7 +40,7 @@ ProtoArcという謎メーカーから出ていたEM03というトラックボ�
 
 - 油が切れると滑りが悪くなるので、鼻の脂を注油してやるといい感じです。(社不Tips)
 
-![](https://media.discordapp.net/attachments/664062785856208896/1185040212053721098/IMG_20231215_110626.jpg?ex=658e29b3&is=657bb4b3&hm=4f8574b58102c58777e5a80dd7f87711e6b47cb870f981a09134138ef25a2e6f&=&format=webp&width=1170&height=659)
+![](https://rlysleepycontents.blob.core.windows.net/images/664062785856208896/1185040212053721098/IMG_20231215_110626.jpg?ex=658e29b3&is=657bb4b3&hm=4f8574b58102c58777e5a80dd7f87711e6b47cb870f981a09134138ef25a2e6f&=&format=webp&width=1170&height=659)
 
 裏面には イルミネーションパターン変更ボタン & モード切替ボタン & 2.4GHzのUSBレシーバー & 電源スイッチがあります。
 
@@ -68,7 +68,7 @@ openSUSE Leap で本トラックボールを使うための設定を紹介しま
 
 - 本体裏面のモード切替ボタンを2番に合わせた状態で長押し、ペアリングモードにしておきます。
 
-![](https://media.discordapp.net/attachments/664062785856208896/1185046119982579782/image.png?ex=658e2f34&is=657bba34&hm=425a2ed19394bdadb105231f457348b6c5c818899a752bc11d7c7cb844d8c561&=&format=webp&quality=lossless&width=719&height=370)
+![](https://rlysleepycontents.blob.core.windows.net/images/664062785856208896/1185046119982579782/image.png?ex=658e2f34&is=657bba34&hm=425a2ed19394bdadb105231f457348b6c5c818899a752bc11d7c7cb844d8c561&=&format=webp&quality=lossless&width=719&height=370)
 
 もう追加済みなので追加したことになってますが、こんな感じで周りのBluetoothデバイスが一覧に出てくると思うので、"ProtoArc EM03" を選択し、ペアリングします。
 

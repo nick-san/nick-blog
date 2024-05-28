@@ -2,13 +2,13 @@
 title: "フロント2輪浮かせた状態で1速にてクラッチをつないではいけない"
 date: 2023-08-28T12:52:33+09:00
 draft: false
-image: "https://media.discordapp.net/attachments/664062785856208896/1145566084141953086/IMG_20230825_231122.jpg?width=1198&height=675"
+image: "https://rlysleepycontents.blob.core.windows.net/images/IMG_20230825_231122.jpg?width=1198&height=675"
 categories: [car]
 ---
 
 # フロント2輪浮かせた状態で1速にてクラッチをつないではいけない
 
-![入庫フィッフィ](https://media.discordapp.net/attachments/664062785856208896/1145566084141953086/IMG_20230825_231122.jpg?width=1198&height=675)
+![入庫フィッフィ](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230825_231122.jpg?width=1198&height=675)
 
 ## TL;DR
 
@@ -28,7 +28,7 @@ categories: [car]
 
 そこでなんと本体700円, 送料2350円という破格でアップガレージに助手席側のドライブシャフトが出品されているのを発見しました。
 
-![](https://media.discordapp.net/attachments/664062785856208896/1144875733437657139/image.png?width=718&height=312)
+![](https://rlysleepycontents.blob.core.windows.net/images/image.png?width=718&height=312)
 
 これは買うしかないと思い、ポチって届いてしばらくの間ほったらかしにしていました。
 
@@ -44,7 +44,7 @@ categories: [car]
 
 そしてなんということでしょう。
 
-![ドラシャ2本](https://media.discordapp.net/attachments/664062785856208896/1145566083806416936/IMG_20230825_220540.jpg?width=380&height=675)
+![ドラシャ2本](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230825_220540.jpg?width=380&height=675)
 
 まったく同じドラシャが二つ存在していることになっています。
 

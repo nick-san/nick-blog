@@ -2,7 +2,7 @@
 title: "Pebble Timeをn年ぶりに復活させた"
 date: 2023-08-13T23:11:29+09:00
 draft: false
-image: "https://media.discordapp.net/attachments/664062785856208896/1140295942466179202/IMG_20230813_234848.jpg?width=718&height=405"
+image: "https://rlysleepycontents.blob.core.windows.net/images/IMG_20230813_234848.jpg?width=718&height=405"
 categories: [gadget]
 ---
 
@@ -34,7 +34,7 @@ e-paperをディスプレイとして搭載しているPebbleは、2012年にKic
 - ただ、ハマった点としては、(おそらく)自動起動をオンにする & Xiaomi バッテリーセーバを切らないと位置情報の取得がうまくできないっぽいです。
     - まあここらへんはスマウォあるあるだよね
 
-![](https://media.discordapp.net/attachments/664062785856208896/1140295942466179202/IMG_20230813_234848.jpg?width=718&height=405)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230813_234848.jpg?width=718&height=405)
 
 ウォッチフェイスもいい感じ(Win9xっぽい)だし、e-paperは目にやさしいし、バッテリーも多少の劣化はあれども問題ない範囲っぽい。
 
@@ -43,7 +43,7 @@ e-paperをディスプレイとして搭載しているPebbleは、2012年にKic
 - これについて詳しく解説されている記事がありました。
     - [【Pebble】位置情報チェックインサービス「Swarm」に手首から10秒で簡単チェックイン！](https://netafull.net/pebble/048971.html)
 
-![](https://media.discordapp.net/attachments/664062785856208896/1140294264199323741/IMG_20230813_234204.jpg?width=718&height=405)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230813_234204.jpg?width=718&height=405)
 
 RebbleのアプリストアからSwarmのアプリを入れて、Foursquareアカウントにログイン。Pebble Time側でアプリ起動後、ワンアクションでチェックインできる。
 

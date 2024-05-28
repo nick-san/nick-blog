@@ -2,7 +2,7 @@
 title: "フィットのIGコイルとプラグを交換した"
 date: 2023-12-02T00:10:42+09:00
 draft: false
-image: "https://media.discordapp.net/attachments/664062785856208896/1180165932308496384/IMG_20231129_143419.jpg?ex=657c6e2c&is=6569f92c&hm=ea015e6f1ab5d4e4c9edd1c1e1341532942c7d9dffce38cb6f96a68276018926&=&format=webp&width=1198&height=675"
+image: "https://rlysleepycontents.blob.core.windows.net/images/IMG_20231129_143419.jpg"
 categories: [car]
 ---
 
@@ -16,7 +16,7 @@ categories: [car]
 
 - 今度購入したのはNGK製の純正同等品です。
 
-![](https://media.discordapp.net/attachments/664062785856208896/1180165933596147762/IMG_20231130_155302.jpg?ex=657c6e2c&is=6569f92c&hm=491cdb0432bf985d60f75cbeea9134278357e58f3c3b40186144f2b93212715b&=&format=webp&width=1198&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20231130_155302.jpg)
 
 また同時にプラグも納車されて以降交換していなかったので交換しました。
 
@@ -24,11 +24,11 @@ categories: [car]
 
 - イリジウムタフと迷いましたが、こっちでいいやーって感じで買いました。
 
-![](https://media.discordapp.net/attachments/664062785856208896/1180165932711153735/IMG_20231130_155257.jpg?ex=657c6e2c&is=6569f92c&hm=b0be85b3ed51dd0180979c5ac45d13cadfe5ddef36ec1cab5d43fa080eff7868&=&format=webp&width=1198&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20231130_155257.jpg)
 
 - 熱価上げればよかったかな？とかも思いましたがとりあえず純正同等ということでこれでいいやーって感じ
 
-![](https://media.discordapp.net/attachments/664062785856208896/1180165933206097973/IMG_20231130_155448.jpg?ex=657c6e2c&is=6569f92c&hm=a130cd3578bce6bb314709004c30b0910dfc4ca8815f8b26d51d3a510046f586&=&format=webp&width=1198&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20231130_155448.jpg)
 
 - 交換前と交換後の比較です。だいぶギャップが広がっていますね、IGコイルに対する結構な負荷になっていたと思われます。
 
@@ -36,7 +36,7 @@ categories: [car]
 
 お気づきの方もいらっしゃると思いますが、購入したIGコイルにヒートシンクを着けてみました。
 
-![](https://media.discordapp.net/attachments/664062785856208896/1180165932308496384/IMG_20231129_143419.jpg?ex=657c6e2c&is=6569f92c&hm=ea015e6f1ab5d4e4c9edd1c1e1341532942c7d9dffce38cb6f96a68276018926&=&format=webp&width=1198&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20231129_143419.jpg)
 
 - お気持ち程度の熱対策ですw
 
@@ -52,4 +52,4 @@ categories: [car]
 
 - やはり2番3番シリンダーのコイルが熱を持ちやすい(エキマニに近い2本なのでそれはそう)ので、おいおい本格的な熱対策を考える必要がありますね
 
-![](https://media.discordapp.net/attachments/664062785856208896/1180169459848200253/IMG_20231130_162453.jpg?ex=657c7175&is=6569fc75&hm=d86b8a5d1ac025b4b15bb904dbf698e480120f821e25dc7a2ee425f4b5695ec5&=&format=webp&width=718&height=405)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20231130_162453.jpg)

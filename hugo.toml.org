@@ -1,0 +1,11 @@
+baseURL = 'https://example.com'
+languageCode = 'ja'
+title = 'にっくのぶろぐ'
+unsafe = true
+
+[[module.imports]]
+path = "github.com/CaiJimmy/hugo-theme-stack/v3"
+
+[params]
+
+ResourceURL = "https://rlysleepycontents.blob.core.windows.net/"

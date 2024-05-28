@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="今回はわたくしのメイン環境である母艦PCのOSを再インストールしたので、やったことのまとめです。 openSUSE Leap 15.4 を使っていましたが、なんやかんやしているうちにNetworkのサービスを消し飛ばしてしまい詰んだので、いっそTumbleweedをクリーンインストールするかーとなりました(死) Tumbleweedを選んだ深い理由はありませんが、メイン環境と言いつつそんなに最近使っていないので、なにかあっても困らないのと、単純に新しいパッケージが提供され続けるのがいいなぁと思ったことくらいです。 インストールメディアの作成 母艦には別のディスク(SSD)にWindows10が入っているので、そちらで 公式サイト からISOイメージをダウンロードし、 Rufus でUSBメモリにイメージを焼きます。 現状のopenSUSE環境からのバックアップも忘れずに。 インストール開始 PCを再起動し、然るべきキーを押下してbootメニューを起動し、openSUSEのインストールメディア(USB)を起動します。 インストール的な選択肢を選ぶとYaSTが起動するので、画面の通りに進めていきます。 以下、YaSTの項目でのわたくしの設定を書き記します。 ディスク 今回はちゃんと/homeとルートディレクトリを分け、Btrfsでフォーマットしたうえでスナップショットも有効化し、Swapも潤沢に確保しています 今まで/homeとルートディレクトリを分けていなったので環境破壊のたびに困ったことになっていました(エチョ) デスクトップ i3 を使用する予定なので、「汎用デスクトップ」を選択しています。 ちなみに「汎用デスクトップ」を選択すると IceWM がインストールされます。 入れたパッケージたち 以下は、openSUSE のインストール終了後に入れたパッケージたちです。 基本的に zypper で入れれるものオンリーですが、パッケージ名が他のディストロと違ったり違わなかったりするのでよしなに GOOGLE IT. お好みセット Terminator ターミナルはかれこれずっとこれを使っています。 fish シェルもかれこれずっとこれを使っています。 i3 wmはかれこれずっとこれを使っています。 アプリランチャとして rofi を入れています。 NetworkManager-applet nemo GUIファイラーはかれこれずっとこれを使っています。 使用感が気に入っているのと、余計なのが同時に入らないのですき flameshot スクショを撮るやつ 便利 VLC Packman Repo を追加してやると幸せになれると思います。 lxappearance GTKの外観を簡単に変えるやつ LXDEの一部だけど、これだけ入れることも可能 picom ウインドウの透過とかをやるやつ fcitx5 ラップトップではfcitx-SKKを使っていますが、母艦では使ってないです。 unar いろんな形式のアーカイブをよしなにしてくれるやつ ファイル共有 Samba yast2-samba-server を入れると必要なものが全部入る + YaSTで設定できるようになるのでオススメ YaST ファイヤウォール から然るべき設定を変えて、systemctl でサービスを有効化しましょう 入ってないだと❓ Git pulseaudio pavucontrol 音量ミキサー的なやつ pasystray ステータスバーのアプレット ブラウザとか Firefox はかれこれ使い始めて10年くらい アドオン Vimium Vimライクなキーバインドを使えるようにするやつ ぜったいいる screenfetch 黒い画面にカタカタ&hellip; ッッターン つってドヤ顔をするやつ sl SL = 蒸気機関車 ">
+<title>OpenSUSE Tumbleweedをセットアップする</title>
+
+<link rel='canonical' href='http://localhost:1313/post/opensuse-tumbleweed%E3%82%92%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="OpenSUSE Tumbleweedをセットアップする">
+<meta property='og:description' content="今回はわたくしのメイン環境である母艦PCのOSを再インストールしたので、やったことのまとめです。 openSUSE Leap 15.4 を使っていましたが、なんやかんやしているうちにNetworkのサービスを消し飛ばしてしまい詰んだので、いっそTumbleweedをクリーンインストールするかーとなりました(死) Tumbleweedを選んだ深い理由はありませんが、メイン環境と言いつつそんなに最近使っていないので、なにかあっても困らないのと、単純に新しいパッケージが提供され続けるのがいいなぁと思ったことくらいです。 インストールメディアの作成 母艦には別のディスク(SSD)にWindows10が入っているので、そちらで 公式サイト からISOイメージをダウンロードし、 Rufus でUSBメモリにイメージを焼きます。 現状のopenSUSE環境からのバックアップも忘れずに。 インストール開始 PCを再起動し、然るべきキーを押下してbootメニューを起動し、openSUSEのインストールメディア(USB)を起動します。 インストール的な選択肢を選ぶとYaSTが起動するので、画面の通りに進めていきます。 以下、YaSTの項目でのわたくしの設定を書き記します。 ディスク 今回はちゃんと/homeとルートディレクトリを分け、Btrfsでフォーマットしたうえでスナップショットも有効化し、Swapも潤沢に確保しています 今まで/homeとルートディレクトリを分けていなったので環境破壊のたびに困ったことになっていました(エチョ) デスクトップ i3 を使用する予定なので、「汎用デスクトップ」を選択しています。 ちなみに「汎用デスクトップ」を選択すると IceWM がインストールされます。 入れたパッケージたち 以下は、openSUSE のインストール終了後に入れたパッケージたちです。 基本的に zypper で入れれるものオンリーですが、パッケージ名が他のディストロと違ったり違わなかったりするのでよしなに GOOGLE IT. お好みセット Terminator ターミナルはかれこれずっとこれを使っています。 fish シェルもかれこれずっとこれを使っています。 i3 wmはかれこれずっとこれを使っています。 アプリランチャとして rofi を入れています。 NetworkManager-applet nemo GUIファイラーはかれこれずっとこれを使っています。 使用感が気に入っているのと、余計なのが同時に入らないのですき flameshot スクショを撮るやつ 便利 VLC Packman Repo を追加してやると幸せになれると思います。 lxappearance GTKの外観を簡単に変えるやつ LXDEの一部だけど、これだけ入れることも可能 picom ウインドウの透過とかをやるやつ fcitx5 ラップトップではfcitx-SKKを使っていますが、母艦では使ってないです。 unar いろんな形式のアーカイブをよしなにしてくれるやつ ファイル共有 Samba yast2-samba-server を入れると必要なものが全部入る + YaSTで設定できるようになるのでオススメ YaST ファイヤウォール から然るべき設定を変えて、systemctl でサービスを有効化しましょう 入ってないだと❓ Git pulseaudio pavucontrol 音量ミキサー的なやつ pasystray ステータスバーのアプレット ブラウザとか Firefox はかれこれ使い始めて10年くらい アドオン Vimium Vimライクなキーバインドを使えるようにするやつ ぜったいいる screenfetch 黒い画面にカタカタ&hellip; ッッターン つってドヤ顔をするやつ sl SL = 蒸気機関車 ">
+<meta property='og:url' content='http://localhost:1313/post/opensuse-tumbleweed%E3%82%92%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B/'>
+<meta property='og:site_name' content='にっくのぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-01-31T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-01-31T00:00:00&#43;00:00'/><meta property='og:image' content='https://rlysleepycontents.blob.core.windows.net/images/202401-tumbleweed-screenfetch.png' />
+<meta name="twitter:title" content="OpenSUSE Tumbleweedをセットアップする">
+<meta name="twitter:description" content="今回はわたくしのメイン環境である母艦PCのOSを再インストールしたので、やったことのまとめです。 openSUSE Leap 15.4 を使っていましたが、なんやかんやしているうちにNetworkのサービスを消し飛ばしてしまい詰んだので、いっそTumbleweedをクリーンインストールするかーとなりました(死) Tumbleweedを選んだ深い理由はありませんが、メイン環境と言いつつそんなに最近使っていないので、なにかあっても困らないのと、単純に新しいパッケージが提供され続けるのがいいなぁと思ったことくらいです。 インストールメディアの作成 母艦には別のディスク(SSD)にWindows10が入っているので、そちらで 公式サイト からISOイメージをダウンロードし、 Rufus でUSBメモリにイメージを焼きます。 現状のopenSUSE環境からのバックアップも忘れずに。 インストール開始 PCを再起動し、然るべきキーを押下してbootメニューを起動し、openSUSEのインストールメディア(USB)を起動します。 インストール的な選択肢を選ぶとYaSTが起動するので、画面の通りに進めていきます。 以下、YaSTの項目でのわたくしの設定を書き記します。 ディスク 今回はちゃんと/homeとルートディレクトリを分け、Btrfsでフォーマットしたうえでスナップショットも有効化し、Swapも潤沢に確保しています 今まで/homeとルートディレクトリを分けていなったので環境破壊のたびに困ったことになっていました(エチョ) デスクトップ i3 を使用する予定なので、「汎用デスクトップ」を選択しています。 ちなみに「汎用デスクトップ」を選択すると IceWM がインストールされます。 入れたパッケージたち 以下は、openSUSE のインストール終了後に入れたパッケージたちです。 基本的に zypper で入れれるものオンリーですが、パッケージ名が他のディストロと違ったり違わなかったりするのでよしなに GOOGLE IT. お好みセット Terminator ターミナルはかれこれずっとこれを使っています。 fish シェルもかれこれずっとこれを使っています。 i3 wmはかれこれずっとこれを使っています。 アプリランチャとして rofi を入れています。 NetworkManager-applet nemo GUIファイラーはかれこれずっとこれを使っています。 使用感が気に入っているのと、余計なのが同時に入らないのですき flameshot スクショを撮るやつ 便利 VLC Packman Repo を追加してやると幸せになれると思います。 lxappearance GTKの外観を簡単に変えるやつ LXDEの一部だけど、これだけ入れることも可能 picom ウインドウの透過とかをやるやつ fcitx5 ラップトップではfcitx-SKKを使っていますが、母艦では使ってないです。 unar いろんな形式のアーカイブをよしなにしてくれるやつ ファイル共有 Samba yast2-samba-server を入れると必要なものが全部入る + YaSTで設定できるようになるのでオススメ YaST ファイヤウォール から然るべき設定を変えて、systemctl でサービスを有効化しましょう 入ってないだと❓ Git pulseaudio pavucontrol 音量ミキサー的なやつ pasystray ステータスバーのアプレット ブラウザとか Firefox はかれこれ使い始めて10年くらい アドオン Vimium Vimライクなキーバインドを使えるようにするやつ ぜったいいる screenfetch 黒い画面にカタカタ&hellip; ッッターン つってドヤ顔をするやつ sl SL = 蒸気機関車 "><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://rlysleepycontents.blob.core.windows.net/images/202401-tumbleweed-screenfetch.png' />
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">にっくのぶろぐ</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/opensuse-tumbleweed%E3%82%92%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B/">
+                
+                    <img src="https://rlysleepycontents.blob.core.windows.net/images/202401-tumbleweed-screenfetch.png" loading="lazy" alt="Featured image of post OpenSUSE Tumbleweedをセットアップする" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/opensuse-tumbleweed%E3%82%92%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B/">OpenSUSE Tumbleweedをセットアップする</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 31, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>今回はわたくしのメイン環境である母艦PCのOSを再インストールしたので、やったことのまとめです。</p>
+<ul>
+<li>
+<p>openSUSE Leap 15.4 を使っていましたが、なんやかんやしているうちにNetworkのサービスを消し飛ばしてしまい詰んだので、いっそTumbleweedをクリーンインストールするかーとなりました(死)</p>
+</li>
+<li>
+<p>Tumbleweedを選んだ深い理由はありませんが、メイン環境と言いつつそんなに最近使っていないので、なにかあっても困らないのと、単純に新しいパッケージが提供され続けるのがいいなぁと思ったことくらいです。</p>
+</li>
+</ul>
+<h2 id="インストールメディアの作成">インストールメディアの作成
+</h2><p>母艦には別のディスク(SSD)にWindows10が入っているので、そちらで <a class="link" href="https://get.opensuse.org/tumbleweed/#download"  target="_blank" rel="noopener"
+    >公式サイト</a> からISOイメージをダウンロードし、 <a class="link" href="https://rufus.ie/ja/"  target="_blank" rel="noopener"
+    >Rufus</a> でUSBメモリにイメージを焼きます。</p>
+<ul>
+<li>現状のopenSUSE環境からのバックアップも忘れずに。</li>
+</ul>
+<h2 id="インストール開始">インストール開始
+</h2><p>PCを再起動し、然るべきキーを押下してbootメニューを起動し、openSUSEのインストールメディア(USB)を起動します。</p>
+<ul>
+<li>インストール的な選択肢を選ぶとYaSTが起動するので、画面の通りに進めていきます。</li>
+</ul>
+<p>以下、YaSTの項目でのわたくしの設定を書き記します。</p>
+<h3 id="ディスク">ディスク
+</h3><p>今回はちゃんと/homeとルートディレクトリを分け、Btrfsでフォーマットしたうえでスナップショットも有効化し、Swapも潤沢に確保しています</p>
+<ul>
+<li>今まで/homeとルートディレクトリを分けていなったので環境破壊のたびに困ったことになっていました(エチョ)</li>
+</ul>
+<h3 id="デスクトップ">デスクトップ
+</h3><p><a class="link" href="https://i3wm.org/"  target="_blank" rel="noopener"
+    >i3</a> を使用する予定なので、「汎用デスクトップ」を選択しています。</p>
+<ul>
+<li>ちなみに「汎用デスクトップ」を選択すると <a class="link" href="https://ice-wm.org/"  target="_blank" rel="noopener"
+    >IceWM</a> がインストールされます。</li>
+</ul>
+<h2 id="入れたパッケージたち">入れたパッケージたち
+</h2><p>以下は、openSUSE のインストール終了後に入れたパッケージたちです。</p>
+<ul>
+<li>基本的に <code>zypper</code> で入れれるものオンリーですが、パッケージ名が他のディストロと違ったり違わなかったりするのでよしなに GOOGLE IT.</li>
+</ul>
+<h3 id="お好みセット">お好みセット
+</h3><ul>
+<li><a class="link" href="https://gnome-terminator.org/"  target="_blank" rel="noopener"
+    >Terminator</a>
+<ul>
+<li>ターミナルはかれこれずっとこれを使っています。</li>
+</ul>
+</li>
+<li><a class="link" href="https://fishshell.com/"  target="_blank" rel="noopener"
+    >fish</a>
+<ul>
+<li>シェルもかれこれずっとこれを使っています。</li>
+</ul>
+</li>
+<li><a class="link" href="https://i3wm.org/"  target="_blank" rel="noopener"
+    >i3</a>
+<ul>
+<li>wmはかれこれずっとこれを使っています。</li>
+<li>アプリランチャとして <a class="link" href="https://github.com/davatorium/rofi"  target="_blank" rel="noopener"
+    >rofi</a> を入れています。</li>
+<li>NetworkManager-applet</li>
+</ul>
+</li>
+<li><a class="link" href="https://github.com/linuxmint/nemo"  target="_blank" rel="noopener"
+    >nemo</a>
+<ul>
+<li>GUIファイラーはかれこれずっとこれを使っています。
+<ul>
+<li>使用感が気に入っているのと、余計なのが同時に入らないのですき</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="link" href="https://flameshot.org/"  target="_blank" rel="noopener"
+    >flameshot</a>
+<ul>
+<li>スクショを撮るやつ 便利</li>
+</ul>
+</li>
+<li><a class="link" href="https://www.videolan.org/vlc/index.ja.html"  target="_blank" rel="noopener"
+    >VLC</a>
+<ul>
+<li><a class="link" href="http://packman.links2linux.org/"  target="_blank" rel="noopener"
+    >Packman Repo</a> を追加してやると幸せになれると思います。</li>
+</ul>
+</li>
+<li><a class="link" href="https://github.com/lxde/lxappearance"  target="_blank" rel="noopener"
+    >lxappearance</a>
+<ul>
+<li>GTKの外観を簡単に変えるやつ LXDEの一部だけど、これだけ入れることも可能</li>
+</ul>
+</li>
+<li><a class="link" href="https://github.com/yshui/picom"  target="_blank" rel="noopener"
+    >picom</a>
+<ul>
+<li>ウインドウの透過とかをやるやつ</li>
+</ul>
+</li>
+<li><a class="link" href="https://github.com/fcitx/fcitx5"  target="_blank" rel="noopener"
+    >fcitx5</a>
+<ul>
+<li>ラップトップではfcitx-SKKを使っていますが、母艦では使ってないです。</li>
+</ul>
+</li>
+<li><a class="link" href="https://github.com/ashang/unar"  target="_blank" rel="noopener"
+    >unar</a>
+<ul>
+<li>いろんな形式のアーカイブをよしなにしてくれるやつ</li>
+</ul>
+</li>
+</ul>
+<h3 id="ファイル共有">ファイル共有
+</h3><ul>
+<li><a class="link" href="https://www.samba.org/"  target="_blank" rel="noopener"
+    >Samba</a>
+<ul>
+<li><code>yast2-samba-server</code> を入れると必要なものが全部入る + YaSTで設定できるようになるのでオススメ</li>
+<li><code>YaST ファイヤウォール</code> から然るべき設定を変えて、<code>systemctl</code> でサービスを有効化しましょう</li>
+</ul>
+</li>
+</ul>
+<h3 id="入ってないだと">入ってないだと❓
+</h3><ul>
+<li>Git</li>
+<li>pulseaudio
+<ul>
+<li>pavucontrol 音量ミキサー的なやつ</li>
+<li>pasystray ステータスバーのアプレット</li>
+</ul>
+</li>
+</ul>
+<h3 id="ブラウザとか">ブラウザとか
+</h3><ul>
+<li>Firefox はかれこれ使い始めて10年くらい
+<ul>
+<li>アドオン
+<ul>
+<li><a class="link" href="https://addons.mozilla.org/en-GB/firefox/addon/vimium-ff/"  target="_blank" rel="noopener"
+    >Vimium</a> Vimライクなキーバインドを使えるようにするやつ</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="ぜったいいる">ぜったいいる
+</h3><ul>
+<li><a class="link" href="https://github.com/KittyKatt/screenFetch"  target="_blank" rel="noopener"
+    >screenfetch</a>
+<ul>
+<li>黒い画面にカタカタ&hellip; ッッターン つってドヤ顔をするやつ</li>
+</ul>
+</li>
+<li><a class="link" href="https://github.com/mtoyoda/sl"  target="_blank" rel="noopener"
+    >sl</a>
+<ul>
+<li>SL = 蒸気機関車</li>
+</ul>
+</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 にっくのぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

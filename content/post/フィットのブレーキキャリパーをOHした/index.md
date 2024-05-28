@@ -2,7 +2,7 @@
 title: "フィットのブレーキキャリパーをOHした"
 date: 2023-08-31T19:09:53+09:00
 draft: false
-image: https://media.discordapp.net/attachments/664062785856208896/1154358440462929971/IMG_20230831_233010.jpg?width=1064&height=599
+image: "https://rlysleepycontents.blob.core.windows.net/images/IMG_20230831_233010.jpg?width=1064&height=599"
 categories: [car]
 ---
 
@@ -16,13 +16,13 @@ categories: [car]
 ## 手順
 
 ### ブレーキキャリパーを外す
-![](https://cdn.discordapp.com/attachments/664062785856208896/1154358438801973368/IMG_20230831_225731.jpg)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230831_225731.jpg)
 
 1. ジャッキアップする
 2. タイヤを外す
 3. キャリパー上下のボルトを外す
 
-![](https://media.discordapp.net/attachments/664062785856208896/1154358439082983494/IMG_20230831_232953.jpg?width=1064&height=599)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230831_232953.jpg?width=1064&height=599)
 
 キャリパー本体が外れたらブレーキホースを止めているボルトを外します
 
@@ -33,7 +33,7 @@ categories: [car]
 以上でキャリパーの外しは完了です。
 
 ### ブレーキキャリパーを分解する
-![](https://cdn.discordapp.com/attachments/664062785856208896/1154358439603085322/IMG_20230831_233000.jpg)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230831_233000.jpg)
 
 いよいよキャリパー本体を分解していきます。
 
@@ -41,7 +41,7 @@ categories: [car]
 
 - ひどく固着していたためエアの程度の圧だと出てこなかった汗
 
-![](https://media.discordapp.net/attachments/664062785856208896/1154358440462929971/IMG_20230831_233010.jpg?width=1064&height=599)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230831_233010.jpg?width=1064&height=599)
 
 こちらが抜いたピストンとピストンシール、ピストンブーツです。
 
@@ -53,7 +53,7 @@ categories: [car]
 
     - 私は知り合いのねこから借りましたが
 
-![](https://media.discordapp.net/attachments/664062785856208896/1154358439863124018/IMG_20230831_233007.jpg?width=1064&height=599)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230831_233007.jpg?width=1064&height=599)
 
 ブーツ、シールをはめる溝のところもキャリパーほじほじとかワイヤーブラシでなるべく綺麗にしておきましょう。
 

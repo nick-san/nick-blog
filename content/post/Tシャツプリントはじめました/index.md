@@ -2,7 +2,7 @@
 title: "Tシャツプリントはじめました"
 date: 2023-12-08T01:47:03+09:00
 draft: false
-image: "https://media.discordapp.net/attachments/664062785856208896/1182375238856618084/IMG_20231208_014607.jpg?ex=658477c0&is=657202c0&hm=c1d06665ed05378e790eba260fef448e66e32d0739d3274139dabaf735071858&=&format=webp&width=719&height=405"
+image: "https://rlysleepycontents.blob.core.windows.net/images/IMG_20231208_014607.jpg"
 ---
 
 # 概要
@@ -13,7 +13,7 @@ image: "https://media.discordapp.net/attachments/664062785856208896/118237523885
 
 ### 使用したあれこれ
 
-![](https://media.discordapp.net/attachments/664062785856208896/1182375238479134720/IMG_20231208_014623.jpg?ex=658477c0&is=657202c0&hm=930d3c0f287c994904d7327deb99f0bb699c631e7afad90f64eb5c1cc4b34512&=&format=webp&width=719&height=405)
+![](https://rlysleepycontents.blob.core.windows.net/images/664062785856208896/1182375238479134720/IMG_20231208_014623.jpg?ex=658477c0&is=657202c0&hm=930d3c0f287c994904d7327deb99f0bb699c631e7afad90f64eb5c1cc4b34512&=&format=webp&width=719&height=405)
 
 |あれこれ|メーカー|品番/商品名|
 | --- | --- | --- |
@@ -36,7 +36,7 @@ EJP-WPN1はA4サイズなので、GIMP等でA4サイズを選択してデザイ�
 ## 印刷
 EW-052Aで印刷します。
 
-![](https://media.discordapp.net/attachments/664062785856208896/1182375306598826014/IMG_20231208_023709.jpg?ex=658477d0&is=657202d0&hm=45566171885995ff23a09e45df62959a5c40a53492ca9f4ebbe3ec64e944ad9f&=&format=webp&width=719&height=405)
+![](https://rlysleepycontents.blob.core.windows.net/images/664062785856208896/1182375306598826014/IMG_20231208_023709.jpg?ex=658477d0&is=657202d0&hm=45566171885995ff23a09e45df62959a5c40a53492ca9f4ebbe3ec64e944ad9f&=&format=webp&width=719&height=405)
 
 今回はWindowsより印刷しましたが、openSUSEのためのドライバも提供されているので、openSUSEからも印刷できると思います。
 
@@ -45,7 +45,7 @@ $ sudo yast
 ハードウェア => プリンタ => 追加(A) => EW-052Aを選択 => ドライバパッケージ
 ```
 
-![](https://media.discordapp.net/attachments/664062785856208896/1182368723332497502/image.png?ex=658471ae&is=6571fcae&hm=63bcacc1c99026fae1058d460abf4f5a6a4dff28d135c630ae575b2aea0107d7&=&format=webp&quality=lossless)
+![](https://rlysleepycontents.blob.core.windows.net/images/664062785856208896/1182368723332497502/image.png?ex=658471ae&is=6571fcae&hm=63bcacc1c99026fae1058d460abf4f5a6a4dff28d135c630ae575b2aea0107d7&=&format=webp&quality=lossless)
 
 以上よりEPSONドライバを追加できます。
 
@@ -89,7 +89,7 @@ $ sudo yast
 
 その後、白いスウェットにCARVEロゴ(黒背景)を貼ってみるといい感じにできました。
 
-![](https://media.discordapp.net/attachments/664062785856208896/1182375238856618084/IMG_20231208_014607.jpg?ex=658477c0&is=657202c0&hm=c1d06665ed05378e790eba260fef448e66e32d0739d3274139dabaf735071858&=&format=webp&width=719&height=405)
+![](https://rlysleepycontents.blob.core.windows.net/images/664062785856208896/1182375238856618084/IMG_20231208_014607.jpg?ex=658477c0&is=657202c0&hm=c1d06665ed05378e790eba260fef448e66e32d0739d3274139dabaf735071858&=&format=webp&width=719&height=405)
 
 - ちなみにこの白いスウェットは、綿:ポリエステルで6:4のものを使用しています。(GU製)
 

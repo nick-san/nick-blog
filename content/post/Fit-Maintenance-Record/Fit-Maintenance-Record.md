@@ -2,7 +2,7 @@
 title: "Fit Maintenance Record"
 date: 2023-07-21T15:10:38+09:00
 draft: false
-image: "https://media.discordapp.net/attachments/989616245374590996/989616525105303602/IMG_20220620_190325.jpg?width=1200&height=675"
+image: "https://rlysleepycontents.blob.core.windows.net/images/fitgd3_tokura.png"
 tag: [car]
 categories: [car]
 
@@ -12,7 +12,7 @@ categories: [car]
 
 ##  納車時のようすと諸々
 
-![](https://media.discordapp.net/attachments/989616245374590996/989616525105303602/IMG_20220620_190325.jpg?width=1200&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20220620_190325.jpg)
 
 HONDA Fit CBA-GD3(中期) グレードは1.5W
 走行距離は13万キロちょい
@@ -49,8 +49,8 @@ HONDA Fit CBA-GD3(中期) グレードは1.5W
 
 ## 2022-07-20
 
-![](https://media.discordapp.net/attachments/989616245374590996/999265000596193400/IMG_20220719_221401.jpg?width=1200&height=675)
-![](https://media.discordapp.net/attachments/989616245374590996/999265001158234202/IMG_20220720_150834.jpg?width=1200&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20220719_221401.jpg?width=1200&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20220720_150834.jpg?width=1200&height=675)
 
 ### オーヂオ関連
 
@@ -63,7 +63,7 @@ HONDA Fit CBA-GD3(中期) グレードは1.5W
 
 ## 2022-07-22
 
-![](https://media.discordapp.net/attachments/989616245374590996/999717921746071732/IMG_20220721_191820.jpg?width=1200&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20220721_191820.jpg?width=1200&height=675)
 
 ホイールナットを [nut屋](https://www.nutya.jp) の貫通ナットに交換した（17HEX M12x1.5）
 
@@ -74,14 +74,14 @@ HONDA Fit CBA-GD3(中期) グレードは1.5W
 
 ## 2022-07-29
 
-![](https://media.discordapp.net/attachments/989616245374590996/1002548137736544296/IMG_20220729_210227_1.jpg?width=379&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20220729_210227_1.jpg?width=379&height=675)
 
 老いる交換 2022/7/29
 カストロール ULTRACLEAN 5W-40
 
 ## 2022-10-04
 
-![](https://media.discordapp.net/attachments/989616245374590996/1026543417037176972/IMG_20221004_021158_1.jpg?width=379&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20221004_021158_1.jpg?width=379&height=675)
 
 老いる交換
 カストロ 10w-30 DC-TURBO
@@ -103,8 +103,8 @@ HONDA Fit CBA-GD3(中期) グレードは1.5W
 - いつかはアリア顔
 
 ## 2022-11-14
-![](https://media.discordapp.net/attachments/989616245374590996/1041705954435158076/IMG_20221114_210800.jpg?width=379&height=675)
-![](https://media.discordapp.net/attachments/989616245374590996/1041705954649051147/IMG_20221114_211342.jpg?width=379&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20221114_210800.jpg?width=379&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20221114_211342.jpg?width=379&height=675)
 
 老る交換 LOVCA RACING 0W-30
 
@@ -135,32 +135,32 @@ HONDA Fit CBA-GD3(中期) グレードは1.5W
 - フロントバンパーのグリル、いっそ消滅させるか
 - ＩＧコイル熱対策（フォグ穴延長を目論んでいる）
 
-![](https://media.discordapp.net/attachments/989616245374590996/1074047411737084004/IMG_20230209_033547_918.jpg?width=1199&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230209_033547_918.jpg?width=1199&height=675)
 
 ## 2023-02-28
 エアクリ替えた（純正）
 
-![](https://media.discordapp.net/attachments/989616245374590996/1080051927829721098/Screenshot_2023-02-28-18-00-24-655_com.instagram.android.jpg?width=304&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/Screenshot_2023-02-28-18-00-24-655_com.instagram.android.jpg?width=304&height=675)
 
 どんだりタブレットホルダーを使ってFire7を車載した
 
-![](https://media.discordapp.net/attachments/989616245374590996/1080052057022681159/IMG_20230228_164211.jpg?width=1199&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230228_164211.jpg?width=1199&height=675)
 
 ## 2023-03-11
 ｷﾞｬﾙ男ﾁｭｰﾝ
 
-![](https://media.discordapp.net/attachments/989616245374590996/1084054283797942272/IMG_20230311_190026.jpg?width=1199&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230311_190026.jpg?width=1199&height=675)
 
 ## 2023-03-21
 
-![](https://media.discordapp.net/attachments/989616245374590996/1088021666401091664/IMG_20230322_174914.jpg?width=380&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230322_174914.jpg?width=380&height=675)
 
 負いる交換　3月21日
 フューエルワン入れてから大体300キロくらい走ったので
 
 ## 2023-04-01
 
-![](https://media.discordapp.net/attachments/989616245374590996/1091435919808143492/IMG_20230331_214347.jpg?width=1199&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230331_214347.jpg?width=1199&height=675)
 
 卍アーシングﾁｭｰﾝ卍をした
 
@@ -175,7 +175,7 @@ HONDA Fit CBA-GD3(中期) グレードは1.5W
 結論：整備後はちゃんと確認をしようね
 
 ## 2023-04-09
-![](https://media.discordapp.net/attachments/989616245374590996/1094322399937298502/IMG_20230409_014816.jpg?width=1197&height=675)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230409_014816.jpg?width=1197&height=675)
 
 車高下げた　腰砕けた　ドラシャ抜けた
 
@@ -195,7 +195,7 @@ HONDA Fit CBA-GD3(中期) グレードは1.5W
 - それについての記事は[ここ](https://nick-san.github.io/nick-blog/p/%E3%83%95%E3%82%A3%E3%83%83%E3%83%88%E3%81%AE%E3%83%98%E3%83%83%E3%83%89%E3%83%A9%E3%82%A4%E3%83%88%E3%81%AE%E3%82%B4%E3%83%A0%E3%82%AB%E3%83%90%E3%83%BC%E3%82%92%E6%9B%BF%E3%81%88%E3%81%9F/)
 
 ## 2023-08-31
-![](https://media.discordapp.net/attachments/664062785856208896/1154358355909943336/IMG_20230831_225517.jpg?width=337&height=599)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230831_225517.jpg?width=337&height=599)
 
 老いる交換 & キャリパーOH(助手席側)
 

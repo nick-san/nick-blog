@@ -2,7 +2,6 @@
 title: "I3wmとYaSTやら"
 date: 2023-12-15
 draft: false
-image: "https://media.discordapp.net/attachments/664062785856208896/1185229856502464613/image.png?ex=658eda52&is=657c6552&hm=bde7f72e7d2d7317a38bcc79522b1aa460f330c34901b5e047ef38b61a748b17&=&format=webp&quality=lossless&width=719&height=331"
 ---
 
 **この記事は[openSUSE Advent Calendar 2023](https://adventar.org/calendars/9615) 16日目の記事です。**
@@ -15,8 +14,6 @@ image: "https://media.discordapp.net/attachments/664062785856208896/118522985650
 
 普段は車を壊して直したり、openSUSE環境を壊して直したりすることをしています。
 
-![](https://media.discordapp.net/attachments/664062785856208896/1182866020512317511/image.png?ex=658640d3&is=6573cbd3&hm=6b26d754f2d16ec702a50bac5fc68603ebfc37803c97c6e0ff3928f15b50a594&=&format=webp&quality=lossless&width=719&height=323)
-
 毎回```zypper dup```  したら環境壊れるだろ❗なのでサボってます
 
 わたしについては[こちら](https://nick-san.github.io/nickpage)をごらんください。
@@ -25,8 +22,6 @@ image: "https://media.discordapp.net/attachments/664062785856208896/118522985650
 わたしはopenSUSE Leap 15.4 + i3wm のラップトップ環境を普段使いしています。
 
 かれこれ2年ほどこの環境を使っていますが、ランチャーアプリである Rofi から YaST2 の各種設定画面を起動したときに、画面の半分をxdg-su(XTerm)というアプリが埋めつくしてくることに憤りを感じていました。
-
-![](https://media.discordapp.net/attachments/664062785856208896/1182865817096958072/image.png?ex=658640a3&is=6573cba3&hm=c456786f62affe1d75b42dd11b55e2645f8d0ab459138b6fff15550c71eff7d5&=&format=webp&quality=lossless&width=719&height=404)
 
 こんな感じでパスワード打った後もYaST2を起動している間は画面の半分を占領している。
 
@@ -74,8 +69,6 @@ ___
 
 ## 問題の解決
 最終的に、XTermを常にFloatingモードで起動するように、i3WMのconfigを弄ることに落ちついた。
-
-![](https://media.discordapp.net/attachments/664062785856208896/1182890233675649216/image.png?ex=65865760&is=6573e260&hm=adc183bbc482f7b45951dbbfc63394f12e44c3a03a58de070ff6539f7874bbd6&=&format=webp&quality=lossless&width=719&height=395)
 
 ```config
 ~/.config/i3/config

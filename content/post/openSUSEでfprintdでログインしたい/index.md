@@ -2,7 +2,7 @@
 title: "OpenSUSEでfprintdでログインしたい"
 date: 2023-12-24
 draft: false
-image: "https://media.discordapp.net/attachments/664062785856208896/1185226801618890872/IMG_20231215_232619.jpg?ex=658ed779&is=657c6279&hm=201a326c663f459395838e46f3b46b9c4e5e5a95256faaf0d23e26b983e15f70&=&format=webp&width=719&height=405"
+image: "https://rlysleepycontents.blob.core.windows.net/images/IMG_20231215_232619.jpg"
 ---
 
 **この記事は[openSUSE Advent Calendar 2023](https://adventar.org/calendars/9615) 24日目の記事です。**
@@ -81,7 +81,7 @@ session  include        common-session
 
 ### 動作確認
 
-![](https://media.discordapp.net/attachments/664062785856208896/1185226801618890872/IMG_20231215_232619.jpg?ex=658ed779&is=657c6279&hm=201a326c663f459395838e46f3b46b9c4e5e5a95256faaf0d23e26b983e15f70&=&format=webp&width=719&height=405)
+![](https://rlysleepycontents.blob.core.windows.net/images/664062785856208896/1185226801618890872/IMG_20231215_232619.jpg?ex=658ed779&is=657c6279&hm=201a326c663f459395838e46f3b46b9c4e5e5a95256faaf0d23e26b983e15f70&=&format=webp&width=719&height=405)
 
 手順が全て終わったら、ログアウトしてLightDM-Greeterの画面で指紋認証でログインできるかテストします。
 

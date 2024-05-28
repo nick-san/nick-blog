@@ -2,11 +2,11 @@
 title: "フィットのヘッドライトのゴムカバーを替えた"
 date: 2023-08-10T03:09:02+09:00
 draft: false
-image: "https://cdn.discordapp.com/attachments/664062785856208896/1138904891306283058/IMG_20230807_185804.jpg"
+image: "https://rlysleepycontents.blob.core.windows.net/images/IMG_20230807_185804.jpg"
 categories: [car]
 ---
 
-![](https://cdn.discordapp.com/attachments/664062785856208896/1138904891306283058/IMG_20230807_185804.jpg)
+![](https://rlysleepycontents.blob.core.windows.net/images/IMG_20230807_185804.jpg)
 
 ## TL;DR
 

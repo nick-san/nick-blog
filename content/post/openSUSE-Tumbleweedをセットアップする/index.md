@@ -2,7 +2,7 @@
 title: "OpenSUSE Tumbleweedをセットアップする"
 date: 2024-01-31
 draft: false
-image: "https://media.discordapp.net/attachments/664062785856208896/1202273930581123124/image.png?ex=65ccdbda&is=65ba66da&hm=12e075d50f3bd346350b4e3c3b3ee2cdbc1136e4b7e4f53e919218eae3f2688a&=&format=webp&quality=lossless&width=1440&height=423"
+image: "https://rlysleepycontents.blob.core.windows.net/images/202401-tumbleweed-screenfetch.png"
 
 ---
 

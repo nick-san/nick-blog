@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Themes on にっくのぶろぐ</title>
+        <link>http://localhost:1313/nick-blog/tags/themes/</link>
+        <description>Recent content in Themes on にっくのぶろぐ</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>ja</language>
+        <lastBuildDate>Thu, 03 Aug 2023 00:10:40 +0900</lastBuildDate><atom:link href="http://localhost:1313/nick-blog/tags/themes/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>New Theme</title>
+        <link>http://localhost:1313/nick-blog/p/new-theme/</link>
+        <pubDate>Thu, 03 Aug 2023 00:10:40 +0900</pubDate>
+        
+        <guid>http://localhost:1313/nick-blog/p/new-theme/</guid>
+        <description>&lt;h1 id=&#34;あたらしいテーマにした&#34;&gt;あたらしいテーマにした
+&lt;/h1&gt;&lt;p&gt;弊ブログは Hugo で生成しているんですが、やっと重い腰を上げてナウい感じのよさそうテーマを見つけたのでこれにしました。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;hugo-theme-stack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;公式サイト&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

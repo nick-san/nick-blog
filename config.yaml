@@ -1,8 +1,11 @@
 baseurl: https://nick-san.github.io/nick-blog
 languageCode: ja
-theme: hugo-theme-stack
 paginate: 5
 title: にっくのぶろぐ
+
+module:
+  imports:
+    - path: github.com/CaiJimmy/hugo-theme-stack/v3
 
 languages:
     ja:

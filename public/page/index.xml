@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on にっくのぶろぐ</title>
+        <link>http://localhost:1313/nick-blog/page/</link>
+        <description>Recent content in Pages on にっくのぶろぐ</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>ja</language>
+        <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/nick-blog/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Archives</title>
+        <link>http://localhost:1313/nick-blog/archives/</link>
+        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/nick-blog/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>About</title>
+        <link>http://localhost:1313/nick-blog/about/</link>
+        <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/nick-blog/about/</guid>
+        <description>&lt;p&gt;ここは札幌出身のおたくの覚え書きスペース。&lt;/p&gt;
+&lt;p&gt;わたしについては &lt;a class=&#34;link&#34; href=&#34;https://nick-san.github.io/nickpage&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ここ&lt;/a&gt; をご覧になって&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Search</title>
+        <link>http://localhost:1313/nick-blog/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/nick-blog/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

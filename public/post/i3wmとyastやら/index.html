@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="この記事はopenSUSE Advent Calendar 2023 16日目の記事です。 まえがき(自己紹介/経緯) 自己紹介 はじめまして。函館でしがない情報系学生をしているニック(@rlysleepynick)と申します。 普段は車を壊して直したり、openSUSE環境を壊して直したりすることをしています。 毎回zypper dup したら環境壊れるだろ❗なのでサボってます わたしについてはこちらをごらんください。 経緯 わたしはopenSUSE Leap 15.4 + i3wm のラップトップ環境を普段使いしています。 かれこれ2年ほどこの環境を使っていますが、ランチャーアプリである Rofi から YaST2 の各種設定画面を起動したときに、画面の半分をxdg-su(XTerm)というアプリが埋めつくしてくることに憤りを感じていました。 こんな感じでパスワード打った後もYaST2を起動している間は画面の半分を占領している。 非常に邪魔だなぁ〜とか思いながら長い間ほったかしにしていましたが、この機会に調べごとがてらどうにかならないかやってみることにしました。 YaST2(GUI)の起動機序 まず、YaST2をGUIで起動したときの起動機序について調べてみました。 最初に一例として、YaST オンラインアップデート のデスクトップエントリを確認してみた。 /usr/share/applications/YaST2/org.opensuse.yast.OnlineUpdate.desktop 中身を見てみると、 Exec=xdg-su -c &quot;/sbin/yast2 online_update&quot; xdg-su というコマンドに &quot;/sbin/yast2 online_update&quot; という引数を渡して実行するようになってました。 ちなみに/sbin/yast2は/usr/sbin/yast2へのリンクでした。 そして/usr/sbin/yast2はshell scriptであり、呼ばれた環境の環境変数やオプションによってGUI/CUIとかQt/GTK/ncursesを適切に選択して起動するようになってる ほかにもよしなにしてくれるようになってるっぽかったんですが、読解するのが面倒(怠惰)だったので現代人らしくChatGPTに要約してもらってみました↓ このスクリプトは、SUSE Linux ディストリビューションのYaST2（Yet another Setup Tool）のメイン起動スクリプトです。YaST2は、システムの設定と管理を行うためのグラフィカルなユーザー インターフェースを提供します。以下は、スクリプトの主な機能と構造の要約です。 起動オプションの処理: スクリプトは、コマンドライン引数（$1, $2, など）を解析し、YaST2の起動オプションに対応する動作を行います。例えば、&ndash;qt や &ndash;ncurses などが指定されると、それに応じたグラフィカルユーザーインターフェースを選択します。 YaST2のモジュールの起動: 指定されたモジュール（例: menu, online_update）を起動します。モジュールは、システムの設定やパッケージ管理など、特定の機能を担当します。 グラフィカルユーザーインターフェースの選択: YaST2は、Qt、GTK、ncurses のいずれかのユーザーインターフェースを使用できます。環境変数やコマンドラインオプションに基づいて、適切なユーザーインターフェースを選択します。 Chefや他のツールとの競合の確認: Chefクライアントが実行中であれば、ユーザーに警告メッセージを表示し、続行するかどうかを確認します。">
+<title>I3wmとYaSTやら</title>
+
+<link rel='canonical' href='http://localhost:1313/post/i3wm%E3%81%A8yast%E3%82%84%E3%82%89/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="I3wmとYaSTやら">
+<meta property='og:description' content="この記事はopenSUSE Advent Calendar 2023 16日目の記事です。 まえがき(自己紹介/経緯) 自己紹介 はじめまして。函館でしがない情報系学生をしているニック(@rlysleepynick)と申します。 普段は車を壊して直したり、openSUSE環境を壊して直したりすることをしています。 毎回zypper dup したら環境壊れるだろ❗なのでサボってます わたしについてはこちらをごらんください。 経緯 わたしはopenSUSE Leap 15.4 + i3wm のラップトップ環境を普段使いしています。 かれこれ2年ほどこの環境を使っていますが、ランチャーアプリである Rofi から YaST2 の各種設定画面を起動したときに、画面の半分をxdg-su(XTerm)というアプリが埋めつくしてくることに憤りを感じていました。 こんな感じでパスワード打った後もYaST2を起動している間は画面の半分を占領している。 非常に邪魔だなぁ〜とか思いながら長い間ほったかしにしていましたが、この機会に調べごとがてらどうにかならないかやってみることにしました。 YaST2(GUI)の起動機序 まず、YaST2をGUIで起動したときの起動機序について調べてみました。 最初に一例として、YaST オンラインアップデート のデスクトップエントリを確認してみた。 /usr/share/applications/YaST2/org.opensuse.yast.OnlineUpdate.desktop 中身を見てみると、 Exec=xdg-su -c &quot;/sbin/yast2 online_update&quot; xdg-su というコマンドに &quot;/sbin/yast2 online_update&quot; という引数を渡して実行するようになってました。 ちなみに/sbin/yast2は/usr/sbin/yast2へのリンクでした。 そして/usr/sbin/yast2はshell scriptであり、呼ばれた環境の環境変数やオプションによってGUI/CUIとかQt/GTK/ncursesを適切に選択して起動するようになってる ほかにもよしなにしてくれるようになってるっぽかったんですが、読解するのが面倒(怠惰)だったので現代人らしくChatGPTに要約してもらってみました↓ このスクリプトは、SUSE Linux ディストリビューションのYaST2（Yet another Setup Tool）のメイン起動スクリプトです。YaST2は、システムの設定と管理を行うためのグラフィカルなユーザー インターフェースを提供します。以下は、スクリプトの主な機能と構造の要約です。 起動オプションの処理: スクリプトは、コマンドライン引数（$1, $2, など）を解析し、YaST2の起動オプションに対応する動作を行います。例えば、&ndash;qt や &ndash;ncurses などが指定されると、それに応じたグラフィカルユーザーインターフェースを選択します。 YaST2のモジュールの起動: 指定されたモジュール（例: menu, online_update）を起動します。モジュールは、システムの設定やパッケージ管理など、特定の機能を担当します。 グラフィカルユーザーインターフェースの選択: YaST2は、Qt、GTK、ncurses のいずれかのユーザーインターフェースを使用できます。環境変数やコマンドラインオプションに基づいて、適切なユーザーインターフェースを選択します。 Chefや他のツールとの競合の確認: Chefクライアントが実行中であれば、ユーザーに警告メッセージを表示し、続行するかどうかを確認します。">
+<meta property='og:url' content='http://localhost:1313/post/i3wm%E3%81%A8yast%E3%82%84%E3%82%89/'>
+<meta property='og:site_name' content='にっくのぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-12-15T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="I3wmとYaSTやら">
+<meta name="twitter:description" content="この記事はopenSUSE Advent Calendar 2023 16日目の記事です。 まえがき(自己紹介/経緯) 自己紹介 はじめまして。函館でしがない情報系学生をしているニック(@rlysleepynick)と申します。 普段は車を壊して直したり、openSUSE環境を壊して直したりすることをしています。 毎回zypper dup したら環境壊れるだろ❗なのでサボってます わたしについてはこちらをごらんください。 経緯 わたしはopenSUSE Leap 15.4 + i3wm のラップトップ環境を普段使いしています。 かれこれ2年ほどこの環境を使っていますが、ランチャーアプリである Rofi から YaST2 の各種設定画面を起動したときに、画面の半分をxdg-su(XTerm)というアプリが埋めつくしてくることに憤りを感じていました。 こんな感じでパスワード打った後もYaST2を起動している間は画面の半分を占領している。 非常に邪魔だなぁ〜とか思いながら長い間ほったかしにしていましたが、この機会に調べごとがてらどうにかならないかやってみることにしました。 YaST2(GUI)の起動機序 まず、YaST2をGUIで起動したときの起動機序について調べてみました。 最初に一例として、YaST オンラインアップデート のデスクトップエントリを確認してみた。 /usr/share/applications/YaST2/org.opensuse.yast.OnlineUpdate.desktop 中身を見てみると、 Exec=xdg-su -c &quot;/sbin/yast2 online_update&quot; xdg-su というコマンドに &quot;/sbin/yast2 online_update&quot; という引数を渡して実行するようになってました。 ちなみに/sbin/yast2は/usr/sbin/yast2へのリンクでした。 そして/usr/sbin/yast2はshell scriptであり、呼ばれた環境の環境変数やオプションによってGUI/CUIとかQt/GTK/ncursesを適切に選択して起動するようになってる ほかにもよしなにしてくれるようになってるっぽかったんですが、読解するのが面倒(怠惰)だったので現代人らしくChatGPTに要約してもらってみました↓ このスクリプトは、SUSE Linux ディストリビューションのYaST2（Yet another Setup Tool）のメイン起動スクリプトです。YaST2は、システムの設定と管理を行うためのグラフィカルなユーザー インターフェースを提供します。以下は、スクリプトの主な機能と構造の要約です。 起動オプションの処理: スクリプトは、コマンドライン引数（$1, $2, など）を解析し、YaST2の起動オプションに対応する動作を行います。例えば、&ndash;qt や &ndash;ncurses などが指定されると、それに応じたグラフィカルユーザーインターフェースを選択します。 YaST2のモジュールの起動: 指定されたモジュール（例: menu, online_update）を起動します。モジュールは、システムの設定やパッケージ管理など、特定の機能を担当します。 グラフィカルユーザーインターフェースの選択: YaST2は、Qt、GTK、ncurses のいずれかのユーザーインターフェースを使用できます。環境変数やコマンドラインオプションに基づいて、適切なユーザーインターフェースを選択します。 Chefや他のツールとの競合の確認: Chefクライアントが実行中であれば、ユーザーに警告メッセージを表示し、続行するかどうかを確認します。">
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">にっくのぶろぐ</a></h1>
+            <h2 class="site-description"></h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/i3wm%E3%81%A8yast%E3%82%84%E3%82%89/">I3wmとYaSTやら</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 15, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><strong>この記事は<a class="link" href="https://adventar.org/calendars/9615"  target="_blank" rel="noopener"
+    >openSUSE Advent Calendar 2023</a> 16日目の記事です。</strong></p>
+<h2 id="まえがき自己紹介経緯">まえがき(自己紹介/経緯)
+</h2><h3 id="自己紹介">自己紹介
+</h3><p>はじめまして。函館でしがない情報系学生をしているニック(<a class="link" href="https://twitter.com/rlysleepynick"  target="_blank" rel="noopener"
+    >@rlysleepynick</a>)と申します。</p>
+<p>普段は車を壊して直したり、openSUSE環境を壊して直したりすることをしています。</p>
+<p>毎回<code>zypper dup</code>  したら環境壊れるだろ❗なのでサボってます</p>
+<p>わたしについては<a class="link" href="https://nick-san.github.io/nickpage"  target="_blank" rel="noopener"
+    >こちら</a>をごらんください。</p>
+<h3 id="経緯">経緯
+</h3><p>わたしはopenSUSE Leap 15.4 + i3wm のラップトップ環境を普段使いしています。</p>
+<p>かれこれ2年ほどこの環境を使っていますが、ランチャーアプリである Rofi から YaST2 の各種設定画面を起動したときに、画面の半分をxdg-su(XTerm)というアプリが埋めつくしてくることに憤りを感じていました。</p>
+<p>こんな感じでパスワード打った後もYaST2を起動している間は画面の半分を占領している。</p>
+<p>非常に邪魔だなぁ〜とか思いながら長い間ほったかしにしていましたが、この機会に調べごとがてらどうにかならないかやってみることにしました。</p>
+<h2 id="yast2guiの起動機序">YaST2(GUI)の起動機序
+</h2><p>まず、YaST2をGUIで起動したときの起動機序について調べてみました。</p>
+<p>最初に一例として、YaST オンラインアップデート のデスクトップエントリを確認してみた。</p>
+<p><code>/usr/share/applications/YaST2/org.opensuse.yast.OnlineUpdate.desktop</code></p>
+<p>中身を見てみると、</p>
+<p><code>Exec=xdg-su -c &quot;/sbin/yast2 online_update&quot;</code></p>
+<p><a class="link" href="https://github.com/tarakbumba/xdg-su"  target="_blank" rel="noopener"
+    >xdg-su</a> というコマンドに <code>&quot;/sbin/yast2 online_update&quot;</code> という引数を渡して実行するようになってました。</p>
+<p>ちなみに<code>/sbin/yast2</code>は<code>/usr/sbin/yast2</code>へのリンクでした。</p>
+<ul>
+<li>そして<code>/usr/sbin/yast2</code>はshell scriptであり、呼ばれた環境の環境変数やオプションによってGUI/CUIとかQt/GTK/ncursesを適切に選択して起動するようになってる</li>
+</ul>
+<p>ほかにもよしなにしてくれるようになってるっぽかったんですが、読解するのが面倒(怠惰)だったので現代人らしくChatGPTに要約してもらってみました↓</p>
+<hr>
+<p>このスクリプトは、SUSE Linux ディストリビューションのYaST2（Yet another Setup Tool）のメイン起動スクリプトです。YaST2は、システムの設定と管理を行うためのグラフィカルなユーザー インターフェースを提供します。以下は、スクリプトの主な機能と構造の要約です。</p>
+<ol>
+<li>
+<p>起動オプションの処理: スクリプトは、コマンドライン引数（$1, $2, など）を解析し、YaST2の起動オプションに対応する動作を行います。例えば、&ndash;qt や &ndash;ncurses などが指定されると、それに応じたグラフィカルユーザーインターフェースを選択します。</p>
+</li>
+<li>
+<p>YaST2のモジュールの起動: 指定されたモジュール（例: menu, online_update）を起動します。モジュールは、システムの設定やパッケージ管理など、特定の機能を担当します。</p>
+</li>
+<li>
+<p>グラフィカルユーザーインターフェースの選択: YaST2は、Qt、GTK、ncurses のいずれかのユーザーインターフェースを使用できます。環境変数やコマンドラインオプションに基づいて、適切なユーザーインターフェースを選択します。</p>
+</li>
+<li>
+<p>Chefや他のツールとの競合の確認: Chefクライアントが実行中であれば、ユーザーに警告メッセージを表示し、続行するかどうかを確認します。</p>
+</li>
+<li>
+<p>GUIプログラムの起動: 選択されたユーザーインターフェースに応じて、対応するYaST2のGUIプログラムを起動します。QtやGTKなどのGUI環境においては、相応の環境変数や引数が設定されます。</p>
+</li>
+<li>
+<p>YaST2のモジュール実行: YaST2のモジュールが実行されます。このモジュールは、システムの設定を変更するための対話的な手段を提供します。</p>
+</li>
+<li>
+<p>終了処理と再起動の確認: YaST2の実行が終了した際には、適切な終了処理を行います。また、/var/lib/YaST2/reboot ファイルが存在すれば、システムを再起動します。</p>
+</li>
+</ol>
+<p>スクリプトは、YaST2の機能を制御し、ユーザーが指定したオプションやモジュールに応じて適切な処理を行うように設計されています。</p>
+<hr>
+<h2 id="問題の解決">問題の解決
+</h2><p>最終的に、XTermを常にFloatingモードで起動するように、i3WMのconfigを弄ることに落ちついた。</p>
+<pre tabindex="0"><code class="language-config" data-lang="config">~/.config/i3/config
+
+# floating windows
+for_window [class=&#34;XTerm&#34;] floating enable
+</code></pre><p>上記を<code>~/.config/i3/config</code>に追加する。</p>
+<p>これでYaST2をGUIで起動するときに、毎度画面をパスワード入力画面に侵食されずに済む。</p>
+<ul>
+<li>
+<p><code>for_window [class=&quot;xdg-su&quot;] floating enable</code> とすれば(ほぼ)パスワード入力時のみにフローティングするようになるかな？と思いましたが、xdg-suはあくまでXTerm上で叩くコマンドであり、GUIアプリケーションでないためか、動きませんでした。</p>
+<ul>
+<li>そのため、XTermは全ての場合でフローティングで起動するように設定しています。</li>
+</ul>
+</li>
+</ul>
+<h3 id="ついでに見た目を変える">ついでに見た目を変える
+</h3><p>XTermの見た目もデフォだと目によろしくないので、<a class="link" href="http://atomiyama.com/linux/page/xterm-01/"  target="_blank" rel="noopener"
+    >いい感じにしてる人</a>を見つけてパクりました。</p>
+<p><code>~/.Xdefault</code>を作成してコピペします。</p>
+<ul>
+<li>
+<p>個人的にフォントサイズを変えたかったので変えました。</p>
+</li>
+<li>
+<p>一部をコメントアウトしています。</p>
+</li>
+</ul>
+<p>変更点は以下の通りです。</p>
+<pre tabindex="0"><code class="language-config" data-lang="config">XTerm*faceSize          : 12
+#XTerm*saveLines          : 2000
+#XTerm*geometry          : 100x30+300+100
+#XTerm*scaleHeight          : 1.15
+</code></pre><p>XTermのカラースキームに関してはググると良い感じのが出てくるっぽいのでお好みで。</p>
+<h2 id="さいごに">さいごに
+</h2><p>「パスワード打つ時だけフローティングモードでXTermを起動し、認証成功したらXTermを消す」</p>
+<p>あるいはGUIでそれっぽいパスワード入力画面を出す</p>
+<p>ができれば100点満点だったと思いますが、自分としては今までが邪魔すぎたので今回のやり方で概ね満足しました。</p>
+<h3 id="ほんとにさいごに">ほんとにさいごに
+</h3><p>後になって知りましたが、KDEの環境には<a class="link" href="https://api.kde.org/frameworks/kdesu/html/index.html"  target="_blank" rel="noopener"
+    >KDESu</a>というものがあるんですね&hellip;</p>
+<ul>
+<li>これ使えばいいやん!という見方もあると思いますが、i3WMで余計なものいれたくない前提という記事でした! という後付けがましい締めくくりとさせていただきますw</li>
+</ul>
+<p>最後になりましたが、読んでいただきありがとうございました。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 にっくのぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
