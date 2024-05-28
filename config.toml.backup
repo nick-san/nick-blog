@@ -1,6 +1,0 @@
-baseURL = 'https://nick-san.github.io/nick-blog/'
-languageCode = 'ja'
-title = 'にっくのぶろぐ'
-theme = 'ananke'
-summarylength = 50
-HasCJKLanguage = true
