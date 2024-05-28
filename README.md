@@ -1,1 +1,3 @@
-Example site modified from https://github.com/gohugoio/hugoBasicExample
+# にっくのぶろぐです
+
+Theme: [Stack](https://themes.gohugo.io/themes/hugo-theme-stack/)
