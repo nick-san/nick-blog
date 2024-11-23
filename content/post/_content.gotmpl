@@ -1,0 +1,67 @@
+{{ $apiKey := getenv "HUGO_MICROCMS_KEY" }}
+{{ $limit := 100 }}
+{{ $endpoint := "https://7d8xk59vsu.microcms.io/api/v1/blog" }}
+{{ $opts := dict
+  "headers" (dict "X-MICROCMS-API-KEY" $apiKey)
+}}
+{{ $dataList := slice }}
+{{/* 無限ループを作る構文が無いので十分大きなループ回数で代用 */}}
+{{ range seq 0 1999 }}
+  {{ $offset := math.Mul $limit . }}
+  {{ $data := dict }}
+  {{ $url := print $endpoint "?orders=createdAt&limit=" $limit "&offset=" $offset }}
+  {{ with resources.GetRemote $url $opts }}
+    {{ with .Err }}
+      {{ errorf "Unable to get remote resource %s: %s" $url . }}
+    {{ else }}
+      {{ $data = . | transform.Unmarshal }}
+      {{ $dataList = $dataList | append $data }}
+    {{ end }}
+  {{ else }}
+    {{ errorf "Unable to get remote resource %s" $url }}
+  {{ end }}
+  {{ if lt (len $data.contents) $limit }}
+    {{ break }}
+  {{ end }}
+{{ end }}
+
+{{/* 記事追加 */}}
+{{ range $dataList }}
+  {{ range .contents }}
+    {{ $articlePath := .id }}
+    {{ $title := .title }}
+    {{ $content := dict "mediaType" "text/html" "value" .content }}
+    {{ $dates := dict "date" (time.AsTime .publishedAt) "lastmod" (time.AsTime .revisedAt) }}
+    
+    {{/* タグの配列を作成 */}}
+    {{ $tags := slice }}
+    {{ range .tags }}
+      {{ $tags = $tags | append .name}}
+    {{ end }}
+    
+    {{/* カテゴリーの配列を作成 */}}
+    {{ $categories := slice }}
+    {{ range .categories }}
+      {{ $categories = $categories | append .categories }}
+    {{ end }}
+    
+    {{/* パラメータの設定 */}}
+    {{ $params := dict 
+      "id" .id 
+      "title" .title 
+      "tags" $tags
+      "categories" $categories
+      "image" .coverImage.url
+    }}
+    
+    {{ $page := dict
+      "content" $content
+      "dates" $dates
+      "kind" "page"
+      "params" $params
+      "path" $articlePath
+      "title" $title
+    }}
+    {{ $.AddPage $page }}
+  {{ end }}
+{{ end }}

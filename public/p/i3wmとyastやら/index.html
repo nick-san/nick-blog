@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
     <head><script src="/nick-blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=nick-blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="この記事はopenSUSE Advent Calendar 2023 16日目の記事です。 まえがき(自己紹介/経緯) 自己紹介 はじめまして。函館でしがない情報系学生をしているニック">
-<title>I3wmとYaSTやら</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="この記事はopenSUSE Advent Calendar 2023 16日目の記事です。 まえがき(自己紹介/経緯)自己紹介はじめまして。函館でしがない情報系学生をしているニック(@rlysleepynick)と申します。 普段は車を壊して直したり、openSUSE環境を壊して直したりすることをしています。 毎回zypper dup したら環境壊れるだろ❗なのでサボってます わたしについてはこちらをごらんください。 経緯わたしはopenSUSE Leap 15.4 + i3wm のラップトップ環境を普段使いしています。 かれこれ2年ほどこの環境を使っていますが、ランチャーアプリである Rofi から YaST2 の各種設定画面を起動したときに、画面の半分をxdg-su(XTerm)というアプリが埋めつくしてくることに憤りを感じていました。 こんな感じでパスワード打った後もYaST2を起動している間は画面の半分を占領している。 非常に邪魔だなぁ〜とか思いながら長い間ほったかしにしていましたが、この機会に調べごとがてらどうにかならないかやってみることにしました。 YaST2(GUI)の起動機序まず、YaST2をGUIで起動したときの起動機序について調べてみました。 最初に一例として、YaST オンラインアップデート のデスクトップエントリを確認してみた。 /usr/share/applications/YaST2/org.opensuse.yast.OnlineUpdate.desktop 中身を見てみると、 Exec=xdg-su -c &quot;/sbin/yast2 online_update&quot; xdg-su というコマンドに &quot;/sbin/yast2 online_update&quot; という引数を渡して実行するようになってました。 ちなみに/sbin/yast2は/usr/sbin/yast2へのリンクでした。 そして/usr/sbin/yast2はshell scriptであり、呼ばれた環境の環境変数やオプションによってGUI/CUIとかQt/GTK/ncursesを適切に選択して起動するようになってるほかにもよしなにしてくれるようになってるっぽかったんですが、読解するのが面倒(怠惰)だったので現代人らしくChatGPTに要約してもらってみました↓ このスクリプトは、SUSE Linux ディストリビューションのYaST2（Yet another Setup Tool）のメイン起動スクリプトです。YaST2は、システムの設定と管理を行うためのグラフィカルなユーザー インターフェースを提供します。以下は、スクリプトの主な機能と構造の要約です。 起動オプションの処理: スクリプトは、コマンドライン引数（$1, $2, など）を解析し、YaST2の起動オプションに対応する動作を行います。例えば、–qt や –ncurses などが指定されると、それに応じたグラフィカルユーザーインターフェースを選択します。YaST2のモジュールの起動: 指定されたモジュール（例: menu, online_update）を起動します。モジュールは、システムの設定やパッケージ管理など、特定の機能を担当します。グラフィカルユーザーインターフェースの選択: YaST2は、Qt、GTK、ncurses のいずれかのユーザーインターフェースを使用できます。環境変数やコマンドラインオプションに基づいて、適切なユーザーインターフェースを選択します。Chefや他のツールとの競合の確認: Chefクライアントが実行中であれば、ユーザーに警告メッセージを表示し、続行するかどうかを確認します。GUIプログラムの起動: 選択されたユーザーインターフェースに応じて、対応するYaST2のGUIプログラムを起動します。QtやGTKなどのGUI環境においては、相応の環境変数や引数が設定されます。YaST2のモジュール実行: YaST2のモジュールが実行されます。このモジュールは、システムの設定を変更するための対話的な手段を提供します。終了処理と再起動の確認: YaST2の実行が終了した際には、適切な終了処理を行います。また、/var/lib/YaST2/reboot ファイルが存在すれば、システムを再起動します。スクリプトは、YaST2の機能を制御し、ユーザーが指定したオプションやモジュールに応じて適切な処理を行うように設計されています。 問題の解決最終的に、XTermを常にFloatingモードで起動するように、i3WMのconfigを弄ることに落ちついた。 ~/.config/i3/config # floating windows for_window [class=&quot;XTerm&quot;] floating enable 上記を~/.">
+<title>i3wmとYaSTやら</title>
 
 <link rel='canonical' href='http://localhost:1313/nick-blog/p/i3wm%E3%81%A8yast%E3%82%84%E3%82%89/'>
 
-<link rel="stylesheet" href="/nick-blog/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="I3wmとYaSTやら">
-<meta property='og:description' content="この記事はopenSUSE Advent Calendar 2023 16日目の記事です。 まえがき(自己紹介/経緯) 自己紹介 はじめまして。函館でしがない情報系学生をしているニック">
+<link rel="stylesheet" href="/nick-blog/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="i3wmとYaSTやら">
+<meta property='og:description' content="この記事はopenSUSE Advent Calendar 2023 16日目の記事です。 まえがき(自己紹介/経緯)自己紹介はじめまして。函館でしがない情報系学生をしているニック(@rlysleepynick)と申します。 普段は車を壊して直したり、openSUSE環境を壊して直したりすることをしています。 毎回zypper dup したら環境壊れるだろ❗なのでサボってます わたしについてはこちらをごらんください。 経緯わたしはopenSUSE Leap 15.4 + i3wm のラップトップ環境を普段使いしています。 かれこれ2年ほどこの環境を使っていますが、ランチャーアプリである Rofi から YaST2 の各種設定画面を起動したときに、画面の半分をxdg-su(XTerm)というアプリが埋めつくしてくることに憤りを感じていました。 こんな感じでパスワード打った後もYaST2を起動している間は画面の半分を占領している。 非常に邪魔だなぁ〜とか思いながら長い間ほったかしにしていましたが、この機会に調べごとがてらどうにかならないかやってみることにしました。 YaST2(GUI)の起動機序まず、YaST2をGUIで起動したときの起動機序について調べてみました。 最初に一例として、YaST オンラインアップデート のデスクトップエントリを確認してみた。 /usr/share/applications/YaST2/org.opensuse.yast.OnlineUpdate.desktop 中身を見てみると、 Exec=xdg-su -c &quot;/sbin/yast2 online_update&quot; xdg-su というコマンドに &quot;/sbin/yast2 online_update&quot; という引数を渡して実行するようになってました。 ちなみに/sbin/yast2は/usr/sbin/yast2へのリンクでした。 そして/usr/sbin/yast2はshell scriptであり、呼ばれた環境の環境変数やオプションによってGUI/CUIとかQt/GTK/ncursesを適切に選択して起動するようになってるほかにもよしなにしてくれるようになってるっぽかったんですが、読解するのが面倒(怠惰)だったので現代人らしくChatGPTに要約してもらってみました↓ このスクリプトは、SUSE Linux ディストリビューションのYaST2（Yet another Setup Tool）のメイン起動スクリプトです。YaST2は、システムの設定と管理を行うためのグラフィカルなユーザー インターフェースを提供します。以下は、スクリプトの主な機能と構造の要約です。 起動オプションの処理: スクリプトは、コマンドライン引数（$1, $2, など）を解析し、YaST2の起動オプションに対応する動作を行います。例えば、–qt や –ncurses などが指定されると、それに応じたグラフィカルユーザーインターフェースを選択します。YaST2のモジュールの起動: 指定されたモジュール（例: menu, online_update）を起動します。モジュールは、システムの設定やパッケージ管理など、特定の機能を担当します。グラフィカルユーザーインターフェースの選択: YaST2は、Qt、GTK、ncurses のいずれかのユーザーインターフェースを使用できます。環境変数やコマンドラインオプションに基づいて、適切なユーザーインターフェースを選択します。Chefや他のツールとの競合の確認: Chefクライアントが実行中であれば、ユーザーに警告メッセージを表示し、続行するかどうかを確認します。GUIプログラムの起動: 選択されたユーザーインターフェースに応じて、対応するYaST2のGUIプログラムを起動します。QtやGTKなどのGUI環境においては、相応の環境変数や引数が設定されます。YaST2のモジュール実行: YaST2のモジュールが実行されます。このモジュールは、システムの設定を変更するための対話的な手段を提供します。終了処理と再起動の確認: YaST2の実行が終了した際には、適切な終了処理を行います。また、/var/lib/YaST2/reboot ファイルが存在すれば、システムを再起動します。スクリプトは、YaST2の機能を制御し、ユーザーが指定したオプションやモジュールに応じて適切な処理を行うように設計されています。 問題の解決最終的に、XTermを常にFloatingモードで起動するように、i3WMのconfigを弄ることに落ちついた。 ~/.config/i3/config # floating windows for_window [class=&quot;XTerm&quot;] floating enable 上記を~/.">
 <meta property='og:url' content='http://localhost:1313/nick-blog/p/i3wm%E3%81%A8yast%E3%82%84%E3%82%89/'>
 <meta property='og:site_name' content='にっくのぶろぐ'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-12-15T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-14T15:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-23T19:02:57&#43;00:00'/>
 <meta name="twitter:site" content="@rlysleepynick">
-    <meta name="twitter:creator" content="@rlysleepynick"><meta name="twitter:title" content="I3wmとYaSTやら">
-<meta name="twitter:description" content="この記事はopenSUSE Advent Calendar 2023 16日目の記事です。 まえがき(自己紹介/経緯) 自己紹介 はじめまして。函館でしがない情報系学生をしているニック">
+    <meta name="twitter:creator" content="@rlysleepynick"><meta name="twitter:title" content="i3wmとYaSTやら">
+<meta name="twitter:description" content="この記事はopenSUSE Advent Calendar 2023 16日目の記事です。 まえがき(自己紹介/経緯)自己紹介はじめまして。函館でしがない情報系学生をしているニック(@rlysleepynick)と申します。 普段は車を壊して直したり、openSUSE環境を壊して直したりすることをしています。 毎回zypper dup したら環境壊れるだろ❗なのでサボってます わたしについてはこちらをごらんください。 経緯わたしはopenSUSE Leap 15.4 + i3wm のラップトップ環境を普段使いしています。 かれこれ2年ほどこの環境を使っていますが、ランチャーアプリである Rofi から YaST2 の各種設定画面を起動したときに、画面の半分をxdg-su(XTerm)というアプリが埋めつくしてくることに憤りを感じていました。 こんな感じでパスワード打った後もYaST2を起動している間は画面の半分を占領している。 非常に邪魔だなぁ〜とか思いながら長い間ほったかしにしていましたが、この機会に調べごとがてらどうにかならないかやってみることにしました。 YaST2(GUI)の起動機序まず、YaST2をGUIで起動したときの起動機序について調べてみました。 最初に一例として、YaST オンラインアップデート のデスクトップエントリを確認してみた。 /usr/share/applications/YaST2/org.opensuse.yast.OnlineUpdate.desktop 中身を見てみると、 Exec=xdg-su -c &quot;/sbin/yast2 online_update&quot; xdg-su というコマンドに &quot;/sbin/yast2 online_update&quot; という引数を渡して実行するようになってました。 ちなみに/sbin/yast2は/usr/sbin/yast2へのリンクでした。 そして/usr/sbin/yast2はshell scriptであり、呼ばれた環境の環境変数やオプションによってGUI/CUIとかQt/GTK/ncursesを適切に選択して起動するようになってるほかにもよしなにしてくれるようになってるっぽかったんですが、読解するのが面倒(怠惰)だったので現代人らしくChatGPTに要約してもらってみました↓ このスクリプトは、SUSE Linux ディストリビューションのYaST2（Yet another Setup Tool）のメイン起動スクリプトです。YaST2は、システムの設定と管理を行うためのグラフィカルなユーザー インターフェースを提供します。以下は、スクリプトの主な機能と構造の要約です。 起動オプションの処理: スクリプトは、コマンドライン引数（$1, $2, など）を解析し、YaST2の起動オプションに対応する動作を行います。例えば、–qt や –ncurses などが指定されると、それに応じたグラフィカルユーザーインターフェースを選択します。YaST2のモジュールの起動: 指定されたモジュール（例: menu, online_update）を起動します。モジュールは、システムの設定やパッケージ管理など、特定の機能を担当します。グラフィカルユーザーインターフェースの選択: YaST2は、Qt、GTK、ncurses のいずれかのユーザーインターフェースを使用できます。環境変数やコマンドラインオプションに基づいて、適切なユーザーインターフェースを選択します。Chefや他のツールとの競合の確認: Chefクライアントが実行中であれば、ユーザーに警告メッセージを表示し、続行するかどうかを確認します。GUIプログラムの起動: 選択されたユーザーインターフェースに応じて、対応するYaST2のGUIプログラムを起動します。QtやGTKなどのGUI環境においては、相応の環境変数や引数が設定されます。YaST2のモジュール実行: YaST2のモジュールが実行されます。このモジュールは、システムの設定を変更するための対話的な手段を提供します。終了処理と再起動の確認: YaST2の実行が終了した際には、適切な終了処理を行います。また、/var/lib/YaST2/reboot ファイルが存在すれば、システムを再起動します。スクリプトは、YaST2の機能を制御し、ユーザーが指定したオプションやモジュールに応じて適切な処理を行うように設計されています。 問題の解決最終的に、XTermを常にFloatingモードで起動するように、i3WMのconfigを弄ることに落ちついた。 ~/.config/i3/config # floating windows for_window [class=&quot;XTerm&quot;] floating enable 上記を~/.">
   
 
 
@@ -243,54 +243,7 @@
     </ol>
 </aside>
 
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">目次</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
-  <ol>
-    <li><a href="#まえがき自己紹介経緯">まえがき(自己紹介/経緯)</a>
-      <ol>
-        <li><a href="#自己紹介">自己紹介</a></li>
-        <li><a href="#経緯">経緯</a></li>
-      </ol>
-    </li>
-    <li><a href="#yast2guiの起動機序">YaST2(GUI)の起動機序</a></li>
-    <li><a href="#問題の解決">問題の解決</a>
-      <ol>
-        <li><a href="#ついでに見た目を変える">ついでに見た目を変える</a></li>
-      </ol>
-    </li>
-    <li><a href="#さいごに">さいごに</a>
-      <ol>
-        <li><a href="#ほんとにさいごに">ほんとにさいごに</a></li>
-      </ol>
-    </li>
-  </ol>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
+    
 
             <main class="main full-width">
     <article class="main-article">
@@ -301,7 +254,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/nick-blog/p/i3wm%E3%81%A8yast%E3%82%84%E3%82%89/">I3wmとYaSTやら</a>
+            <a href="/nick-blog/p/i3wm%E3%81%A8yast%E3%82%84%E3%82%89/">i3wmとYaSTやら</a>
         </h2>
     
         
@@ -323,7 +276,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2023, 12, 15</time>
+                <time class="article-time--published">2023, 12, 14</time>
             </div>
         
 
@@ -338,7 +291,7 @@
 
 
                 <time class="article-time--reading">
-                    読了時間: 5分
+                    読了時間: 1分
                 </time>
             </div>
         
@@ -353,134 +306,34 @@
     <section class="article-content">
     
     
-    <p><strong>この記事は<a class="link" href="https://adventar.org/calendars/9615"  target="_blank" rel="noopener"
-    >openSUSE Advent Calendar 2023</a> 16日目の記事です。</strong></p>
-<h2 id="まえがき自己紹介経緯">まえがき(自己紹介/経緯)
-</h2><h3 id="自己紹介">自己紹介
-</h3><p>はじめまして。函館でしがない情報系学生をしているニック(<a class="link" href="https://twitter.com/rlysleepynick"  target="_blank" rel="noopener"
-    >@rlysleepynick</a>)と申します。</p>
-<p>普段は車を壊して直したり、openSUSE環境を壊して直したりすることをしています。</p>
-<p>毎回<code>zypper dup</code>  したら環境壊れるだろ❗なのでサボってます</p>
-<p>わたしについては<a class="link" href="https://nick-san.github.io/nickpage"  target="_blank" rel="noopener"
-    >こちら</a>をごらんください。</p>
-<h3 id="経緯">経緯
-</h3><p>わたしはopenSUSE Leap 15.4 + i3wm のラップトップ環境を普段使いしています。</p>
-<p>かれこれ2年ほどこの環境を使っていますが、ランチャーアプリである Rofi から YaST2 の各種設定画面を起動したときに、画面の半分をxdg-su(XTerm)というアプリが埋めつくしてくることに憤りを感じていました。</p>
-<p>こんな感じでパスワード打った後もYaST2を起動している間は画面の半分を占領している。</p>
-<p>非常に邪魔だなぁ〜とか思いながら長い間ほったかしにしていましたが、この機会に調べごとがてらどうにかならないかやってみることにしました。</p>
-<h2 id="yast2guiの起動機序">YaST2(GUI)の起動機序
-</h2><p>まず、YaST2をGUIで起動したときの起動機序について調べてみました。</p>
-<p>最初に一例として、YaST オンラインアップデート のデスクトップエントリを確認してみた。</p>
-<p><code>/usr/share/applications/YaST2/org.opensuse.yast.OnlineUpdate.desktop</code></p>
-<p>中身を見てみると、</p>
-<p><code>Exec=xdg-su -c &quot;/sbin/yast2 online_update&quot;</code></p>
-<p><a class="link" href="https://github.com/tarakbumba/xdg-su"  target="_blank" rel="noopener"
-    >xdg-su</a> というコマンドに <code>&quot;/sbin/yast2 online_update&quot;</code> という引数を渡して実行するようになってました。</p>
-<p>ちなみに<code>/sbin/yast2</code>は<code>/usr/sbin/yast2</code>へのリンクでした。</p>
-<ul>
-<li>そして<code>/usr/sbin/yast2</code>はshell scriptであり、呼ばれた環境の環境変数やオプションによってGUI/CUIとかQt/GTK/ncursesを適切に選択して起動するようになってる</li>
-</ul>
-<p>ほかにもよしなにしてくれるようになってるっぽかったんですが、読解するのが面倒(怠惰)だったので現代人らしくChatGPTに要約してもらってみました↓</p>
-<hr>
-<p>このスクリプトは、SUSE Linux ディストリビューションのYaST2（Yet another Setup Tool）のメイン起動スクリプトです。YaST2は、システムの設定と管理を行うためのグラフィカルなユーザー インターフェースを提供します。以下は、スクリプトの主な機能と構造の要約です。</p>
-<ol>
-<li>
-<p>起動オプションの処理: スクリプトは、コマンドライン引数（$1, $2, など）を解析し、YaST2の起動オプションに対応する動作を行います。例えば、&ndash;qt や &ndash;ncurses などが指定されると、それに応じたグラフィカルユーザーインターフェースを選択します。</p>
-</li>
-<li>
-<p>YaST2のモジュールの起動: 指定されたモジュール（例: menu, online_update）を起動します。モジュールは、システムの設定やパッケージ管理など、特定の機能を担当します。</p>
-</li>
-<li>
-<p>グラフィカルユーザーインターフェースの選択: YaST2は、Qt、GTK、ncurses のいずれかのユーザーインターフェースを使用できます。環境変数やコマンドラインオプションに基づいて、適切なユーザーインターフェースを選択します。</p>
-</li>
-<li>
-<p>Chefや他のツールとの競合の確認: Chefクライアントが実行中であれば、ユーザーに警告メッセージを表示し、続行するかどうかを確認します。</p>
-</li>
-<li>
-<p>GUIプログラムの起動: 選択されたユーザーインターフェースに応じて、対応するYaST2のGUIプログラムを起動します。QtやGTKなどのGUI環境においては、相応の環境変数や引数が設定されます。</p>
-</li>
-<li>
-<p>YaST2のモジュール実行: YaST2のモジュールが実行されます。このモジュールは、システムの設定を変更するための対話的な手段を提供します。</p>
-</li>
-<li>
-<p>終了処理と再起動の確認: YaST2の実行が終了した際には、適切な終了処理を行います。また、/var/lib/YaST2/reboot ファイルが存在すれば、システムを再起動します。</p>
-</li>
-</ol>
-<p>スクリプトは、YaST2の機能を制御し、ユーザーが指定したオプションやモジュールに応じて適切な処理を行うように設計されています。</p>
-<hr>
-<h2 id="問題の解決">問題の解決
-</h2><p>最終的に、XTermを常にFloatingモードで起動するように、i3WMのconfigを弄ることに落ちついた。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">~/.config/i3/config
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># floating windows
-</span></span><span class="line"><span class="cl">for_window [class=&#34;XTerm&#34;] floating enable
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>上記を<code>~/.config/i3/config</code>に追加する。</p>
-<p>これでYaST2をGUIで起動するときに、毎度画面をパスワード入力画面に侵食されずに済む。</p>
-<ul>
-<li>
-<p><code>for_window [class=&quot;xdg-su&quot;] floating enable</code> とすれば(ほぼ)パスワード入力時のみにフローティングするようになるかな？と思いましたが、xdg-suはあくまでXTerm上で叩くコマンドであり、GUIアプリケーションでないためか、動きませんでした。</p>
-<ul>
-<li>そのため、XTermは全ての場合でフローティングで起動するように設定しています。</li>
-</ul>
-</li>
-</ul>
-<h3 id="ついでに見た目を変える">ついでに見た目を変える
-</h3><p>XTermの見た目もデフォだと目によろしくないので、<a class="link" href="http://atomiyama.com/linux/page/xterm-01/"  target="_blank" rel="noopener"
-    >いい感じにしてる人</a>を見つけてパクりました。</p>
-<p><code>~/.Xdefault</code>を作成してコピペします。</p>
-<ul>
-<li>
-<p>個人的にフォントサイズを変えたかったので変えました。</p>
-</li>
-<li>
-<p>一部をコメントアウトしています。</p>
-</li>
-</ul>
-<p>変更点は以下の通りです。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">XTerm*faceSize          : 12
-</span></span><span class="line"><span class="cl">#XTerm*saveLines          : 2000
-</span></span><span class="line"><span class="cl">#XTerm*geometry          : 100x30+300+100
-</span></span><span class="line"><span class="cl">#XTerm*scaleHeight          : 1.15
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>XTermのカラースキームに関してはググると良い感じのが出てくるっぽいのでお好みで。</p>
-<h2 id="さいごに">さいごに
-</h2><p>「パスワード打つ時だけフローティングモードでXTermを起動し、認証成功したらXTermを消す」</p>
-<p>あるいはGUIでそれっぽいパスワード入力画面を出す</p>
-<p>ができれば100点満点だったと思いますが、自分としては今までが邪魔すぎたので今回のやり方で概ね満足しました。</p>
-<h3 id="ほんとにさいごに">ほんとにさいごに
-</h3><p>後になって知りましたが、KDEの環境には<a class="link" href="https://api.kde.org/frameworks/kdesu/html/index.html"  target="_blank" rel="noopener"
-    >KDESu</a>というものがあるんですね&hellip;</p>
-<ul>
-<li>これ使えばいいやん!という見方もあると思いますが、i3WMで余計なものいれたくない前提という記事でした! という後付けがましい締めくくりとさせていただきますw</li>
-</ul>
-<p>最後になりましたが、読んでいただきありがとうございました。</p>
+    <p><strong>この記事は</strong><a href="https://adventar.org/calendars/9615" target="_blank" rel="noopener noreferrer nofollow"><strong>openSUSE Advent Calendar 2023</strong></a><strong> 16日目の記事です。</strong></p><h2 id="h610b7c3c57">まえがき(自己紹介/経緯)</h2><h3 id="h696e98ee0a">自己紹介</h3><p>はじめまして。函館でしがない情報系学生をしているニック(<a href="https://twitter.com/rlysleepynick" target="_blank" rel="noopener noreferrer nofollow">@rlysleepynick</a>)と申します。</p><p>普段は車を壊して直したり、openSUSE環境を壊して直したりすることをしています。</p><p>毎回<code>zypper dup</code> したら環境壊れるだろ❗なのでサボってます</p><p>わたしについては<a href="https://nick-san.github.io/nickpage" target="_blank" rel="noopener noreferrer nofollow">こちら</a>をごらんください。</p><h3 id="hd2c91c24e4">経緯</h3><p>わたしはopenSUSE Leap 15.4 + i3wm のラップトップ環境を普段使いしています。</p><p>かれこれ2年ほどこの環境を使っていますが、ランチャーアプリである Rofi から YaST2 の各種設定画面を起動したときに、画面の半分をxdg-su(XTerm)というアプリが埋めつくしてくることに憤りを感じていました。</p><p>こんな感じでパスワード打った後もYaST2を起動している間は画面の半分を占領している。</p><p>非常に邪魔だなぁ〜とか思いながら長い間ほったかしにしていましたが、この機会に調べごとがてらどうにかならないかやってみることにしました。</p><h2 id="h97a3141e10">YaST2(GUI)の起動機序</h2><p>まず、YaST2をGUIで起動したときの起動機序について調べてみました。</p><p>最初に一例として、YaST オンラインアップデート のデスクトップエントリを確認してみた。</p><p><code>/usr/share/applications/YaST2/org.opensuse.yast.OnlineUpdate.desktop</code></p><p>中身を見てみると、</p><p><code>Exec=xdg-su -c &quot;/sbin/yast2 online_update&quot;</code></p><p><a href="https://github.com/tarakbumba/xdg-su" target="_blank" rel="noopener noreferrer nofollow">xdg-su</a> というコマンドに <code>&quot;/sbin/yast2 online_update&quot;</code> という引数を渡して実行するようになってました。</p><p>ちなみに<code>/sbin/yast2</code>は<code>/usr/sbin/yast2</code>へのリンクでした。</p><ul><li>そして<code>/usr/sbin/yast2</code>はshell scriptであり、呼ばれた環境の環境変数やオプションによってGUI/CUIとかQt/GTK/ncursesを適切に選択して起動するようになってる</li></ul><p>ほかにもよしなにしてくれるようになってるっぽかったんですが、読解するのが面倒(怠惰)だったので現代人らしくChatGPTに要約してもらってみました↓</p><hr><p>このスクリプトは、SUSE Linux ディストリビューションのYaST2（Yet another Setup Tool）のメイン起動スクリプトです。YaST2は、システムの設定と管理を行うためのグラフィカルなユーザー インターフェースを提供します。以下は、スクリプトの主な機能と構造の要約です。</p><ol><li>起動オプションの処理: スクリプトは、コマンドライン引数（$1, $2, など）を解析し、YaST2の起動オプションに対応する動作を行います。例えば、–qt や –ncurses などが指定されると、それに応じたグラフィカルユーザーインターフェースを選択します。</li><li>YaST2のモジュールの起動: 指定されたモジュール（例: menu, online_update）を起動します。モジュールは、システムの設定やパッケージ管理など、特定の機能を担当します。</li><li>グラフィカルユーザーインターフェースの選択: YaST2は、Qt、GTK、ncurses のいずれかのユーザーインターフェースを使用できます。環境変数やコマンドラインオプションに基づいて、適切なユーザーインターフェースを選択します。</li><li>Chefや他のツールとの競合の確認: Chefクライアントが実行中であれば、ユーザーに警告メッセージを表示し、続行するかどうかを確認します。</li><li>GUIプログラムの起動: 選択されたユーザーインターフェースに応じて、対応するYaST2のGUIプログラムを起動します。QtやGTKなどのGUI環境においては、相応の環境変数や引数が設定されます。</li><li>YaST2のモジュール実行: YaST2のモジュールが実行されます。このモジュールは、システムの設定を変更するための対話的な手段を提供します。</li><li>終了処理と再起動の確認: YaST2の実行が終了した際には、適切な終了処理を行います。また、/var/lib/YaST2/reboot ファイルが存在すれば、システムを再起動します。</li></ol><p>スクリプトは、YaST2の機能を制御し、ユーザーが指定したオプションやモジュールに応じて適切な処理を行うように設計されています。</p><hr><h2 id="h6ef74195c0">問題の解決</h2><p>最終的に、XTermを常にFloatingモードで起動するように、i3WMのconfigを弄ることに落ちついた。</p><div class="table-wrapper"><table><tbody><tr><td colspan="1" rowspan="1"><pre><code class="language-fallback">~/.config/i3/config
 
+# floating windows
+for_window [class=&quot;XTerm&quot;] floating enable
+</code></pre></td></tr></tbody></table></div><p>上記を<code>~/.config/i3/config</code>に追加する。</p><p>これでYaST2をGUIで起動するときに、毎度画面をパスワード入力画面に侵食されずに済む。</p><ul><li><code>for_window [class=&quot;xdg-su&quot;] floating enable</code> とすれば(ほぼ)パスワード入力時のみにフローティングするようになるかな？と思いましたが、xdg-suはあくまでXTerm上で叩くコマンドであり、GUIアプリケーションでないためか、動きませんでした。<ul><li>そのため、XTermは全ての場合でフローティングで起動するように設定しています。</li></ul></li></ul><h3 id="hf50e9bae37">ついでに見た目を変える</h3><p>XTermの見た目もデフォだと目によろしくないので、<a href="http://atomiyama.com/linux/page/xterm-01/" target="_blank" rel="noopener noreferrer nofollow">いい感じにしてる人</a>を見つけてパクりました。</p><p><code>~/.Xdefault</code>を作成してコピペします。</p><ul><li>個人的にフォントサイズを変えたかったので変えました。</li><li>一部をコメントアウトしています。</li></ul><p>変更点は以下の通りです。</p><div class="table-wrapper"><table><tbody><tr><td colspan="1" rowspan="1"><pre><code class="language-fallback">XTerm*faceSize          : 12
+#XTerm*saveLines          : 2000
+#XTerm*geometry          : 100x30+300+100
+#XTerm*scaleHeight          : 1.15
+</code></pre></td></tr></tbody></table></div><p>XTermのカラースキームに関してはググると良い感じのが出てくるっぽいのでお好みで。</p><h2 id="h1afe451c43">さいごに</h2><p>「パスワード打つ時だけフローティングモードでXTermを起動し、認証成功したらXTermを消す」</p><p>あるいはGUIでそれっぽいパスワード入力画面を出す</p><p>ができれば100点満点だったと思いますが、自分としては今までが邪魔すぎたので今回のやり方で概ね満足しました。</p><h3 id="h5f6269a17b">ほんとにさいごに</h3><p>後になって知りましたが、KDEの環境には<a href="https://api.kde.org/frameworks/kdesu/html/index.html" target="_blank" rel="noopener noreferrer nofollow">KDESu</a>というものがあるんですね…</p><ul><li>これ使えばいいやん!という見方もあると思いますが、i3WMで余計なものいれたくない前提という記事でした! という後付けがましい締めくくりとさせていただきますw</li></ul><p>最後になりましたが、読んでいただきありがとうございました。</p>
 </section>
 
 
     <footer class="article-footer">
     
 
-    </footer>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最終更新 2024, 11, 23 19:02 JST
+        </span>
+    </section></footer>
 
 
     
