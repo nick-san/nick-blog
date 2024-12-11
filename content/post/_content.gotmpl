@@ -30,7 +30,9 @@
   {{ range .contents }}
     {{ $articlePath := .id }}
     {{ $title := .title }}
-    {{ $content := dict "mediaType" "text/html" "value" .content }}
+    {{ $rawContent := .content }}
+    {{ $processedContent := $rawContent | replaceRE "<a([^>]*?)>" "<a class=\"link\"$1>" }}
+    {{ $content := dict "mediaType" "text/html" "value" $processedContent }}
     {{ $dates := dict "date" (time.AsTime .publishedAt) "lastmod" (time.AsTime .revisedAt) }}
     
     {{/* タグの配列を作成 */}}
@@ -52,6 +54,7 @@
       "tags" $tags
       "categories" $categories
       "image" .coverImage.url
+      "toc" true
     }}
     
     {{ $page := dict

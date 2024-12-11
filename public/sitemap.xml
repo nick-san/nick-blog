@@ -3,13 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/nick-blog/</loc>
-    <lastmod>2024-11-23T19:13:19+00:00</lastmod>
+    <lastmod>2024-12-11T21:25:07+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/nick-blog/p/arama/</loc>
+    <lastmod>2024-12-11T21:25:07+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/nick-blog/post/</loc>
-    <lastmod>2024-11-23T19:13:19+00:00</lastmod>
+    <lastmod>2024-12-11T21:25:07+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/nick-blog/p/protoarc-em03-%E3%82%92%E8%B2%B7%E3%81%A3%E3%81%9F/</loc>
-    <lastmod>2024-11-23T19:01:37+00:00</lastmod>
+    <loc>http://localhost:1313/nick-blog/p/opensuse.asia-summit-2024-tokyo-%E5%8F%82%E5%8A%A0%E8%A8%98/</loc>
+    <lastmod>2024-12-11T10:05:42+00:00</lastmod>
+    <priority>0</priority>
+  </url><url>
+    <loc>http://localhost:1313/nick-blog/p/%E3%83%88%E3%83%A9%E3%82%AF%E3%83%9C%E3%82%AA%E3%83%AB%E3%83%88%E3%83%A9%E3%83%83%E3%82%AF%E3%83%9C%E3%83%BC%E3%83%AB%E3%81%AE%E3%81%99%E3%81%99%E3%82%812024/</loc>
+    <lastmod>2024-12-02T15:57:31+00:00</lastmod>
+    <priority>0</priority>
+  </url><url>
+    <loc>http://localhost:1313/nick-blog/p/%E3%81%82%E3%82%89%E3%81%9F%E7%95%8C%E9%9A%88-%E3%81%82%E3%82%89%E3%81%9F%E7%95%8C%E9%9A%88%E3%82%AE%E3%83%A3%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%83%A9%E3%83%83%E3%83%97%E7%90%86%E8%AB%96%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/</loc>
+    <lastmod>2024-12-01T14:21:12+00:00</lastmod>
     <priority>0</priority>
   </url><url>
     <loc>http://localhost:1313/nick-blog/p/opensuse-tumbleweed-%E3%82%92%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B/</loc>
@@ -20,47 +31,54 @@
     <lastmod>2024-11-23T19:04:34+00:00</lastmod>
     <priority>0</priority>
   </url><url>
+    <loc>http://localhost:1313/nick-blog/categories/</loc>
+    <lastmod>2024-11-23T20:40:29+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/nick-blog/categories/gadget/</loc>
+    <lastmod>2024-11-23T20:40:29+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/nick-blog/p/i3wm%E3%81%A8yast%E3%82%84%E3%82%89/</loc>
     <lastmod>2024-11-23T19:02:57+00:00</lastmod>
+    <priority>0</priority>
+  </url><url>
+    <loc>http://localhost:1313/nick-blog/p/protoarc-em03-%E3%82%92%E8%B2%B7%E3%81%A3%E3%81%9F/</loc>
+    <lastmod>2024-11-23T20:39:00+00:00</lastmod>
     <priority>0</priority>
   </url><url>
     <loc>http://localhost:1313/nick-blog/p/t%E3%82%B7%E3%83%A3%E3%83%84%E3%83%97%E3%83%AA%E3%83%B3%E3%83%88%E3%81%AF%E3%81%98%E3%82%81%E3%81%BE%E3%81%97%E3%81%9F/</loc>
     <lastmod>2024-11-23T18:58:26+00:00</lastmod>
     <priority>0</priority>
   </url><url>
+    <loc>http://localhost:1313/nick-blog/categories/car/</loc>
+    <lastmod>2024-11-23T20:40:14+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/nick-blog/p/%E3%83%95%E3%82%A3%E3%83%83%E3%83%88%E3%81%AEig%E3%82%B3%E3%82%A4%E3%83%AB%E3%81%A8%E3%83%97%E3%83%A9%E3%82%B0%E3%82%92%E4%BA%A4%E6%8F%9B%E3%81%97%E3%81%9F/</loc>
-    <lastmod>2024-11-23T18:56:56+00:00</lastmod>
+    <lastmod>2024-11-23T20:39:19+00:00</lastmod>
     <priority>0</priority>
   </url><url>
     <loc>http://localhost:1313/nick-blog/p/%E3%83%95%E3%82%A3%E3%83%83%E3%83%88%E3%81%AE%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AD%E3%82%AD%E3%83%A3%E3%83%AA%E3%83%91%E3%83%BC%E3%82%92oh%E3%81%97%E3%81%9F/</loc>
-    <lastmod>2024-11-23T18:54:05+00:00</lastmod>
+    <lastmod>2024-11-23T20:39:31+00:00</lastmod>
     <priority>0</priority>
   </url><url>
     <loc>http://localhost:1313/nick-blog/p/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%882%E8%BC%AA%E6%B5%AE%E3%81%8B%E3%81%9B%E3%81%9F%E7%8A%B6%E6%85%8B%E3%81%A71%E9%80%9F%E3%81%AB%E3%81%A6%E3%82%AF%E3%83%A9%E3%83%83%E3%83%81%E3%82%92%E3%81%A4%E3%81%AA%E3%81%84%E3%81%A7%E3%81%AF%E3%81%84%E3%81%91%E3%81%AA%E3%81%84/</loc>
-    <lastmod>2024-11-23T18:51:22+00:00</lastmod>
+    <lastmod>2024-11-23T20:39:54+00:00</lastmod>
     <priority>0</priority>
   </url><url>
     <loc>http://localhost:1313/nick-blog/p/pebble-time-%E3%82%92n%E5%B9%B4%E3%81%B6%E3%82%8A%E3%81%AB%E5%BE%A9%E6%B4%BB%E3%81%95%E3%81%9B%E3%81%9F/</loc>
-    <lastmod>2024-11-23T19:09:45+00:00</lastmod>
+    <lastmod>2024-11-23T20:40:29+00:00</lastmod>
     <priority>0</priority>
   </url><url>
     <loc>http://localhost:1313/nick-blog/p/%E3%83%95%E3%82%A3%E3%83%83%E3%83%88%E3%81%AE%E3%83%98%E3%83%83%E3%83%89%E3%83%A9%E3%82%A4%E3%83%88%E3%81%AE%E3%82%B4%E3%83%A0%E3%82%AB%E3%83%90%E3%83%BC%E3%82%92%E6%9B%BF%E3%81%88%E3%81%9F/</loc>
-    <lastmod>2024-11-23T18:48:03+00:00</lastmod>
+    <lastmod>2024-11-23T20:40:14+00:00</lastmod>
     <priority>0</priority>
   </url><url>
     <loc>http://localhost:1313/nick-blog/p/fit-gd3-%E3%83%A1%E3%83%B3%E3%83%86%E3%83%8A%E3%83%B3%E3%82%B9%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89/</loc>
-    <lastmod>2024-11-23T18:46:23+00:00</lastmod>
+    <lastmod>2024-11-23T20:36:48+00:00</lastmod>
     <priority>0</priority>
   </url><url>
     <loc>http://localhost:1313/nick-blog/p/amazon-fire-7-2022-%E3%82%92%E8%B2%B7%E3%81%A3%E3%81%9F/</loc>
     <lastmod>2024-11-23T19:13:19+00:00</lastmod>
     <priority>0</priority>
-  </url><url>
-    <loc>http://localhost:1313/nick-blog/categories/</loc>
-    <lastmod>2024-11-23T19:13:19+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/nick-blog/categories/gadget/</loc>
-    <lastmod>2024-11-23T19:13:19+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/nick-blog/p/fun-advent-calendar-2022/</loc>
     <lastmod>2024-11-23T18:35:58+00:00</lastmod>
@@ -74,8 +92,6 @@
   </url><url>
     <loc>http://localhost:1313/nick-blog/about/</loc>
     <lastmod>2023-08-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/nick-blog/categories/car/</loc>
   </url><url>
     <loc>http://localhost:1313/nick-blog/search/</loc>
   </url><url>
