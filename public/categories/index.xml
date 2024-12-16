@@ -6,10 +6,10 @@
         <description>Recent content in Categories on にっくのぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Thu, 14 Dec 2023 15:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/nick-blog/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 02 Dec 2024 15:57:31 +0000</lastBuildDate><atom:link href="http://localhost:1313/nick-blog/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Gadget</title>
         <link>http://localhost:1313/nick-blog/categories/gadget/</link>
-        <pubDate>Thu, 14 Dec 2023 15:00:00 +0000</pubDate>
+        <pubDate>Mon, 02 Dec 2024 15:57:31 +0000</pubDate>
         
         <guid>http://localhost:1313/nick-blog/categories/gadget/</guid>
         <description>&lt;img src="http://localhost:1313/nick-blog/categories/gadget/Pebble_Time.jpg" alt="Featured image of post Gadget" /&gt;</description>
@@ -21,6 +21,14 @@
         
         <guid>http://localhost:1313/nick-blog/categories/car/</guid>
         <description>&lt;img src="http://localhost:1313/nick-blog/categories/car/fitgd3_tokura.png" alt="Featured image of post Car" /&gt;</description>
+        </item>
+        <item>
+        <title>openSUSE</title>
+        <link>http://localhost:1313/nick-blog/categories/opensuse/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/nick-blog/categories/opensuse/</guid>
+        <description>&lt;img src="http://localhost:1313/nick-blog/categories/opensuse/openSUSE_logo.png" alt="Featured image of post openSUSE" /&gt;</description>
         </item>
         
     </channel>

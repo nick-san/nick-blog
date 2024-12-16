@@ -6,18 +6,79 @@
         <description>Recent content on にっくのぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Wed, 11 Dec 2024 21:25:07 +0900</lastBuildDate><atom:link href="http://localhost:1313/nick-blog/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Arama</title>
-        <link>http://localhost:1313/nick-blog/p/arama/</link>
-        <pubDate>Wed, 11 Dec 2024 21:25:07 +0900</pubDate>
+        <lastBuildDate>Mon, 16 Dec 2024 15:13:29 +0000</lastBuildDate><atom:link href="http://localhost:1313/nick-blog/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ナウいコマンド2024</title>
+        <link>http://localhost:1313/nick-blog/p/%E3%83%8A%E3%82%A6%E3%81%84%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%892024/</link>
+        <pubDate>Mon, 16 Dec 2024 15:13:29 +0000</pubDate>
         
-        <guid>http://localhost:1313/nick-blog/p/arama/</guid>
-        <description>&lt;img src="http://localhost:1313/nick-blog/hoge.jpg" alt="Featured image of post Arama" /&gt;&lt;h1 id=&#34;a&#34;&gt;a
-&lt;/h1&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;a.org&#34; &gt;a&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;ra&#34;&gt;ra
-&lt;/h2&gt;&lt;h2 id=&#34;ma&#34;&gt;ma
-&lt;/h2&gt;&lt;h4 id=&#34;lol&#34;&gt;lol
-&lt;/h4&gt;</description>
+        <guid>http://localhost:1313/nick-blog/p/%E3%83%8A%E3%82%A6%E3%81%84%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%892024/</guid>
+        <description>&lt;img src="https://images.microcms-assets.io/assets/c1f61db01f594d468fd5d226bc374e6a/3a02329490d441e3a92d517c1c8ad4c7/2024-12-17-000925_hyprshot.png" alt="Featured image of post ナウいコマンド2024" /&gt;&lt;p&gt;この記事は、&lt;a class=&#34;link&#34; href=&#34;https://adventar.org/calendars/10513&#34;&gt;openSUSE Advent Calendar 2024&lt;/a&gt; 17日目の記事です。&lt;/p&gt;&lt;ul&gt;&lt;li&gt;ステルス日付移動をしていましたが見なかったことにしてください(エ)&lt;/li&gt;&lt;/ul&gt;&lt;h1 id=&#34;h7a8e229c0c&#34;&gt;ナウい&lt;/h1&gt;&lt;p&gt;みなさんこんにちは。今回は個人的にナウいなぁと思った openSUSE Tumbleweed で使えるコマンドを紹介します。&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.weblio.jp/content/%E3%83%8A%E3%82%A6%E3%81%84&#34;&gt;ナウい&lt;/a&gt;: ［形］《「ナウ（now）」の形容詞化》いかにも現代的である。当世風で格好がいい。「—・い服装」&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&#34;hc857d529ee&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aristocratos/btop&#34;&gt;btop&lt;/a&gt; (btop++)&lt;/h2&gt;&lt;p&gt;topコマンドの代替として htop などが知られていると思いますが、この btop はさらに視覚的に優れており、複数の要素を一度に確認できます。&lt;/p&gt;&lt;p&gt;元となったプロジェクトは bashtop で、この btop(++) に関してはそれの C++ バージョンということらしいです。&lt;/p&gt;&lt;p&gt;openSUSE Tumbleweed においては、OSSリポジトリで提供されており、zypperでインストールすることができます。&lt;/p&gt;&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;➤ zypper info btop
+リポジトリのデータを読み込んでいます...
+インストール済みのパッケージを読み込んでいます...
+
+
+パッケージ btop に関する情報:
+-----------------------------
+リポジトリ             : openSUSE-Tumbleweed-Oss
+名前                   : btop
+バージョン             : 1.4.0+git20240922.6c0cedd-1.1
+アーキテクチャ         : x86_64
+ベンダ                 : openSUSE
+インストール後のサイズ : 2.1 MiB
+インストール済み       : はい (y)
+状態                   : 最新
+ソースパッケージ       : btop-1.4.0+git20240922.6c0cedd-1.1.src
+アップストリーム URL   : https://github.com/aristocratos/btop
+概要                   : プロセッサ、メモリ、ディスク、ネットワーク、およびプロセスの使用状況と統計情報
+説明                   :
+    プロセッサ、メモリ、ディスク、ネットワーク、およびプロセスの使用状況と統計情報を
+    表示するリソースモニタ。C++バージョンとbashtopとbpytopの続き。
+&lt;/code&gt;&lt;/pre&gt;&lt;figure&gt;&lt;img src=&#34;https://images.microcms-assets.io/assets/c1f61db01f594d468fd5d226bc374e6a/3888858003f14c4e841b0ae61477f2da/image.png&#34; alt=&#34;&#34; width=&#34;1920&#34; height=&#34;1080&#34;&gt;&lt;/figure&gt;&lt;figure&gt;&lt;img src=&#34;https://images.microcms-assets.io/assets/c1f61db01f594d468fd5d226bc374e6a/b811a0f07b7d42b2a9dedb0920ea33ea/image.png&#34; alt=&#34;&#34; width=&#34;1920&#34; height=&#34;1080&#34;&gt;&lt;/figure&gt;&lt;h2 id=&#34;hc4e7a65a60&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ajeetdsouza/zoxide&#34;&gt;Zoxide&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;z コマンド として知られる Zoxide は、cdコマンドの代替として有用なナウいコマンドです。&lt;/p&gt;&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;cd /foo/bar
+z /foo/bar&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;のように、cdと同様に使用することができます。&lt;/p&gt;&lt;p&gt;また、zi での履歴機能が非常に便利で、今まで行ったことのあるディレクトリを記録しているため、素早く目的のディレクトリに移動できます。&lt;/p&gt;&lt;figure&gt;&lt;img src=&#34;https://images.microcms-assets.io/assets/c1f61db01f594d468fd5d226bc374e6a/db93e0180e464bf093d75037319e3745/image.png&#34; alt=&#34;&#34; width=&#34;1266&#34; height=&#34;522&#34;&gt;&lt;/figure&gt;&lt;p&gt;このように、ziコマンドで呼びだされたプロンプト上に検索語句を入力すると、候補の一覧を表示することもできます。&lt;/p&gt;&lt;pre&gt;&lt;code class=&#34;language-console&#34;&gt;➤ zypper info zoxide
+リポジトリのデータを読み込んでいます...
+インストール済みのパッケージを読み込んでいます...
+
+
+パッケージ zoxide に関する情報:
+-------------------------------
+リポジトリ             : openSUSE-Tumbleweed-Oss
+名前                   : zoxide
+バージョン             : 0.9.6-1.1
+アーキテクチャ         : x86_64
+ベンダ                 : openSUSE
+インストール後のサイズ : 1.2 MiB
+インストール済み       : はい (y)
+状態                   : 最新
+ソースパッケージ       : zoxide-0.9.6-1.1.src
+アップストリーム URL   : https://github.com/ajeetdsouza/zoxide
+概要                   : A smarter cd command
+説明                   :
+    zoxide is a smarter cd
+    command, inspired by z and
+    autojump. It remembers
+    which directories you use
+    most frequently, so you can
+    &amp;quot;jump&amp;quot; to them in
+    just a few keystrokes.&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;h6e5a1d5976&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/eza-community/eza&#34;&gt;eza&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;こちらは ls コマンドの代替として知られる、exa のフォーク版です。&lt;/p&gt;&lt;ul&gt;&lt;li&gt;違いは何？と言われるとわたしはexaを使ったことがないので知りませんが、READMEによると以下の通りだそうです&lt;figure&gt;&lt;img src=&#34;https://images.microcms-assets.io/assets/c1f61db01f594d468fd5d226bc374e6a/00628098b822471a91fe3da7f88b696f/image.png&#34; alt=&#34;&#34; width=&#34;1267&#34; height=&#34;618&#34;&gt;&lt;/figure&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;私は ```exa --icons --sort type``` をlsコマンドとしてエイリアス設定をしているため、lsをするとこんな感じになります。&lt;/p&gt;&lt;ul&gt;&lt;li&gt;iconを表示するにはターミナルのフォントとして Nerd Fonts を設定する必要はあります&lt;/li&gt;&lt;/ul&gt;&lt;figure&gt;&lt;img src=&#34;https://images.microcms-assets.io/assets/c1f61db01f594d468fd5d226bc374e6a/d3696bdf90234b8485d7a801fc7f8b73/image.png&#34; alt=&#34;&#34; width=&#34;1452&#34; height=&#34;106&#34;&gt;&lt;/figure&gt;&lt;p&gt;こちらの eza に関しても、OSSリポジトリで提供されているためすぐにzypperでインストールできます。&lt;/p&gt;&lt;pre&gt;&lt;code&gt;➤ zypper info eza
+リポジトリのデータを読み込んでいます...
+インストール済みのパッケージを読み込んでいます...
+
+
+パッケージ eza に関する情報:
+----------------------------
+リポジトリ             : openSUSE-Tumbleweed-Oss
+名前                   : eza
+バージョン             : 0.20.9-1.1
+アーキテクチャ         : x86_64
+ベンダ                 : openSUSE
+インストール後のサイズ : 2.2 MiB
+インストール済み       : はい (y)
+状態                   : 最新
+ソースパッケージ       : eza-0.20.9-1.1.src
+アップストリーム URL   : https://github.com/eza-community/eza
+概要                   : Rustで書かれたlsの置き換え
+説明                   :
+    eza is a modern, maintained replacement for ls, built on exa.&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;heb84ddeb7d&#34;&gt;番外編&lt;/h1&gt;&lt;h2 id=&#34;h17e9a230c7&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cacalabs/toilet&#34;&gt;toilet&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;入力したテキストをアスキーアート表示してくれるコマンドです。&lt;/p&gt;&lt;figure&gt;&lt;img src=&#34;https://images.microcms-assets.io/assets/c1f61db01f594d468fd5d226bc374e6a/3a02329490d441e3a92d517c1c8ad4c7/2024-12-17-000925_hyprshot.png&#34; alt=&#34;&#34; width=&#34;870&#34; height=&#34;451&#34;&gt;&lt;/figure&gt;</description>
         </item>
         <item>
         <title>openSUSE.Asia Summit 2024 Tokyo 参加記</title>
