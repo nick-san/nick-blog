@@ -1,7 +1,7 @@
 ---
 title: "openSUSE"
 description: "openSUSEについてのあれこれ"
-slug: "openSUSE"
+slug: "opensuse"
 image: "openSUSE_logo.png"
 style:
     background: "#173f4f"
